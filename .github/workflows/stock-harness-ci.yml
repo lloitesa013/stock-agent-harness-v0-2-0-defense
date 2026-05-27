@@ -13,7 +13,7 @@ jobs:
     permissions:
       contents: read
     env:
-      STOCK_HARNESS_TMPDIR: ${{ runner.temp }}/stock-harness-tmp
+      STOCK_HARNESS_TMPDIR: /tmp/stock-harness-tmp
 
     steps:
     - name: Checkout code
