@@ -1,0 +1,290 @@
+{
+  "agentic_candidate_v1": {
+    "annualized_return": 0.2095531914814158,
+    "average_exposure": 0.6824503311258279,
+    "average_turnover": 0.015231788079470199,
+    "bar_count": 756,
+    "cagr": 0.23289018499220626,
+    "calmar_ratio": 29.489562522678295,
+    "downside_deviation": 0.004587590077936193,
+    "family": "candidate",
+    "final_equity": 18724.59247721285,
+    "hypothetical_backtest": true,
+    "label": "Agentic downside-guarded momentum v1",
+    "max_drawdown": 0.007897376735009454,
+    "return_multiple": 1.872459247721285,
+    "sharpe_ratio": 14.444296209494949,
+    "sortino_ratio": 45.678272888689946,
+    "strategy_id": "agentic_candidate_v1",
+    "total_return": 0.8724592477212849,
+    "total_turnover": 11.5,
+    "trade_days": 9,
+    "transaction_cost_total": 212.96501117848067,
+    "volatility": 0.014507677524894992,
+    "win_rate": 0.8026490066225166,
+    "worst_month": {
+      "period": "2019-02",
+      "return": -0.0035907868939465404
+    },
+    "worst_year": {
+      "period": "2020",
+      "return": 0.14212582601496093
+    }
+  },
+  "buy_and_hold_spy": {
+    "annualized_return": -0.022307117463758054,
+    "average_exposure": 1.0,
+    "average_turnover": 0.0013245033112582781,
+    "bar_count": 756,
+    "cagr": -0.023482969682764643,
+    "calmar_ratio": -0.07651150652979878,
+    "downside_deviation": 0.051381669494103055,
+    "family": "baseline",
+    "final_equity": 9312.803045692366,
+    "hypothetical_backtest": true,
+    "label": "Buy & hold synthetic SPY",
+    "max_drawdown": 0.306920759345116,
+    "return_multiple": 0.9312803045692366,
+    "sharpe_ratio": -0.41761791351294564,
+    "sortino_ratio": -0.4341454390912344,
+    "strategy_id": "buy_and_hold_spy",
+    "total_return": -0.0687196954307634,
+    "total_turnover": 1.0,
+    "trade_days": 1,
+    "transaction_cost_total": 15.0,
+    "volatility": 0.053415135562824845,
+    "win_rate": 0.7033112582781457,
+    "worst_month": {
+      "period": "2018-09",
+      "return": -0.14148481123094092
+    },
+    "worst_year": {
+      "period": "2018",
+      "return": -0.14188615272128513
+    }
+  },
+  "cash": {
+    "annualized_return": 0.0,
+    "average_exposure": 0.0,
+    "average_turnover": 0.0,
+    "bar_count": 756,
+    "cagr": 0.0,
+    "calmar_ratio": 0.0,
+    "downside_deviation": 0.0,
+    "family": "baseline",
+    "final_equity": 10000.0,
+    "hypothetical_backtest": true,
+    "label": "Cash",
+    "max_drawdown": 0.0,
+    "return_multiple": 1.0,
+    "sharpe_ratio": 0.0,
+    "sortino_ratio": 0.0,
+    "strategy_id": "cash",
+    "total_return": 0.0,
+    "total_turnover": 0.0,
+    "trade_days": 0,
+    "transaction_cost_total": 0.0,
+    "volatility": 0.0,
+    "win_rate": 0.0,
+    "worst_month": {
+      "period": "2018-01",
+      "return": 0.0
+    },
+    "worst_year": {
+      "period": "2018",
+      "return": 0.0
+    }
+  },
+  "equal_weight": {
+    "annualized_return": 0.03193200083500722,
+    "average_exposure": 1.0,
+    "average_turnover": 0.0013245033112582781,
+    "bar_count": 756,
+    "cagr": 0.032009917825517986,
+    "calmar_ratio": 0.1952411696953012,
+    "downside_deviation": 0.024703086946066752,
+    "family": "baseline",
+    "final_equity": 10989.990369024998,
+    "hypothetical_backtest": true,
+    "label": "Equal weight universe",
+    "max_drawdown": 0.16395065587587676,
+    "return_multiple": 1.0989990369024998,
+    "sharpe_ratio": 1.1018922261402542,
+    "sortino_ratio": 1.2926320060615526,
+    "strategy_id": "equal_weight",
+    "total_return": 0.09899903690249978,
+    "total_turnover": 1.0,
+    "trade_days": 1,
+    "transaction_cost_total": 15.0,
+    "volatility": 0.028979241415342156,
+    "win_rate": 0.6026490066225165,
+    "worst_month": {
+      "period": "2018-09",
+      "return": -0.07044321837756307
+    },
+    "worst_year": {
+      "period": "2018",
+      "return": 0.001695061809192433
+    }
+  },
+  "mean_reversion": {
+    "annualized_return": 0.020740084881978232,
+    "average_exposure": 0.9483443708609272,
+    "average_turnover": 0.1629139072847682,
+    "bar_count": 756,
+    "cagr": 0.020491873835498886,
+    "calmar_ratio": 0.18828287965818055,
+    "downside_deviation": 0.027352264235973468,
+    "family": "baseline",
+    "final_equity": 10626.584349355204,
+    "hypothetical_backtest": true,
+    "label": "Simple short-horizon mean reversion",
+    "max_drawdown": 0.10883556631755897,
+    "return_multiple": 1.0626584349355204,
+    "sharpe_ratio": 0.6926855641765343,
+    "sortino_ratio": 0.7582584280061556,
+    "strategy_id": "mean_reversion",
+    "total_return": 0.06265843493552037,
+    "total_turnover": 123.0,
+    "trade_days": 63,
+    "transaction_cost_total": 1939.3904689900503,
+    "volatility": 0.029941557836034995,
+    "win_rate": 0.633112582781457,
+    "worst_month": {
+      "period": "2018-09",
+      "return": -0.08411484309735495
+    },
+    "worst_year": {
+      "period": "2018",
+      "return": -0.006161763001480303
+    }
+  },
+  "simple_momentum": {
+    "annualized_return": 0.19280408783425654,
+    "average_exposure": 1.0,
+    "average_turnover": 0.01456953642384106,
+    "bar_count": 756,
+    "cagr": 0.21243584141185812,
+    "calmar_ratio": 11.716461634817891,
+    "downside_deviation": 0.005367633996286718,
+    "family": "baseline",
+    "final_equity": 17809.196246663374,
+    "hypothetical_backtest": true,
+    "label": "Simple top-1 momentum",
+    "max_drawdown": 0.018131399054861497,
+    "return_multiple": 1.7809196246663375,
+    "sharpe_ratio": 13.689021064719109,
+    "sortino_ratio": 35.91975309189053,
+    "strategy_id": "simple_momentum",
+    "total_return": 0.7809196246663375,
+    "total_turnover": 11.0,
+    "trade_days": 6,
+    "transaction_cost_total": 220.68113997529008,
+    "volatility": 0.014084578212182975,
+    "win_rate": 0.8026490066225166,
+    "worst_month": {
+      "period": "2019-12",
+      "return": -0.013109888522817359
+    },
+    "worst_year": {
+      "period": "2020",
+      "return": 0.12625817037836984
+    }
+  },
+  "sma_crossover": {
+    "annualized_return": -0.04180051780171314,
+    "average_exposure": 0.48344370860927155,
+    "average_turnover": 0.006622516556291391,
+    "bar_count": 756,
+    "cagr": -0.042181935860121644,
+    "calmar_ratio": -0.18538850217838648,
+    "downside_deviation": 0.049619605851929836,
+    "family": "baseline",
+    "final_equity": 8788.673769883066,
+    "hypothetical_backtest": true,
+    "label": "SMA 50/200 crossover",
+    "max_drawdown": 0.2275326428795077,
+    "return_multiple": 0.8788673769883065,
+    "sharpe_ratio": -0.8310706686673859,
+    "sortino_ratio": -0.8424193841130121,
+    "strategy_id": "sma_crossover",
+    "total_return": -0.12113262301169347,
+    "total_turnover": 5.0,
+    "trade_days": 5,
+    "transaction_cost_total": 67.45351681189571,
+    "volatility": 0.05029718816660909,
+    "win_rate": 0.3390728476821192,
+    "worst_month": {
+      "period": "2018-09",
+      "return": -0.14148481123094092
+    },
+    "worst_year": {
+      "period": "2018",
+      "return": -0.10986629627795208
+    }
+  },
+  "stock_harness_ma_cash": {
+    "annualized_return": 0.15859993088408306,
+    "average_exposure": 0.7033112582781457,
+    "average_turnover": 0.011920529801324504,
+    "bar_count": 756,
+    "cagr": 0.17174093352954478,
+    "calmar_ratio": 26.420608068335643,
+    "downside_deviation": 0.0031680447852997736,
+    "family": "baseline",
+    "final_equity": 16077.616460466748,
+    "hypothetical_backtest": true,
+    "label": "Stock Harness MA-to-cash baseline",
+    "max_drawdown": 0.006500264228792352,
+    "return_multiple": 1.6077616460466748,
+    "sharpe_ratio": 14.529691867971126,
+    "sortino_ratio": 50.062401775382625,
+    "strategy_id": "stock_harness_ma_cash",
+    "total_return": 0.6077616460466748,
+    "total_turnover": 9.0,
+    "trade_days": 9,
+    "transaction_cost_total": 170.99589076425306,
+    "volatility": 0.01091557428232161,
+    "win_rate": 0.6887417218543046,
+    "worst_month": {
+      "period": "2020-01",
+      "return": -0.003965339452773775
+    },
+    "worst_year": {
+      "period": "2020",
+      "return": 0.10588835532576257
+    }
+  },
+  "volatility_targeting": {
+    "annualized_return": 0.08230540346895902,
+    "average_exposure": 0.735642188704781,
+    "average_turnover": 0.00561809436015852,
+    "bar_count": 756,
+    "cagr": 0.08529692022461788,
+    "calmar_ratio": 0.6646175530913984,
+    "downside_deviation": 0.026269630671606748,
+    "family": "baseline",
+    "final_equity": 12779.228806248833,
+    "hypothetical_backtest": true,
+    "label": "Volatility targeting synthetic SPY",
+    "max_drawdown": 0.12833985474483522,
+    "return_multiple": 1.2779228806248832,
+    "sharpe_ratio": 2.8002618436585465,
+    "sortino_ratio": 3.1331008988229874,
+    "strategy_id": "volatility_targeting",
+    "total_return": 0.27792288062488324,
+    "total_turnover": 4.241661241919682,
+    "trade_days": 51,
+    "transaction_cost_total": 71.10972523177661,
+    "volatility": 0.029392038339324328,
+    "win_rate": 0.7006622516556291,
+    "worst_month": {
+      "period": "2018-09",
+      "return": -0.08113891408003071
+    },
+    "worst_year": {
+      "period": "2018",
+      "return": 0.05218950508779696
+    }
+  }
+}

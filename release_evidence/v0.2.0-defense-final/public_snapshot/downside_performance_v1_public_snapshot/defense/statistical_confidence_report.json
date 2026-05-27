@@ -1,0 +1,222 @@
+{
+  "bootstrap": {
+    "block_size": 21,
+    "disclosure": "Intervals describe uncertainty inside the included benchmark return path only; they are not future-performance forecasts.",
+    "method": "deterministic circular moving-block bootstrap over realized daily returns",
+    "metrics": {
+      "cagr": {
+        "max": 0.3381448419588249,
+        "median": 0.2333696730051158,
+        "min": 0.12737656395764274,
+        "p05": 0.16845193630932603,
+        "p25": 0.20414648693829635,
+        "p75": 0.2584930474834444,
+        "p95": 0.2960755084413066
+      },
+      "calmar_ratio": {
+        "max": 90.70933827738646,
+        "median": 32.108057530833,
+        "min": 13.690162550265182,
+        "p05": 20.535592249355492,
+        "p25": 27.579304305257256,
+        "p75": 38.55196449964045,
+        "p95": 57.130493655270925
+      },
+      "max_drawdown": {
+        "max": 0.01303016113123856,
+        "median": 0.007555990510841881,
+        "min": 0.002757485717755359,
+        "p05": 0.004492085163083981,
+        "p25": 0.006252208119543884,
+        "p75": 0.007555990510841881,
+        "p95": 0.009275474919681854
+      },
+      "sharpe_ratio": {
+        "max": 23.885055714482785,
+        "median": 14.603297256431876,
+        "min": 9.372904394912249,
+        "p05": 11.491344328375728,
+        "p25": 12.999749684062902,
+        "p75": 15.818725866629743,
+        "p95": 18.64120633636389
+      },
+      "sortino_ratio": {
+        "max": 281.63418393426434,
+        "median": 48.35636942067306,
+        "min": 21.77255516218548,
+        "p05": 29.52639958100548,
+        "p25": 36.76212387401368,
+        "p75": 74.45810876118263,
+        "p95": 122.03772576588909
+      },
+      "total_return": {
+        "max": 1.3933564080226977,
+        "median": 0.8746418833765485,
+        "min": 0.4321891662888597,
+        "p05": 0.5942795943861477,
+        "p25": 0.7446882249687776,
+        "p75": 0.9913895802421296,
+        "p95": 1.1749235606237325
+      }
+    },
+    "sample_count": 250,
+    "seed": 13077039596413443691,
+    "worst_case_percentiles": {
+      "cagr_p05": 0.16845193630932603,
+      "calmar_p05": 20.535592249355492,
+      "max_drawdown_p95": 0.009275474919681854
+    }
+  },
+  "candidate_strategy_id": "agentic_candidate_v1",
+  "checks": {
+    "bootstrap_block_size_recorded": true,
+    "bootstrap_samples_present": true,
+    "confidence_intervals_present": true,
+    "descriptive_not_predictive_disclosure_present": true,
+    "drawdown_distribution_present": true,
+    "rolling_performance_stability_present": true,
+    "walk_forward_report_present": true
+  },
+  "observed_candidate_metrics": {
+    "cagr": 0.23289018499220626,
+    "calmar_ratio": 29.489562522678295,
+    "max_drawdown": 0.007897376735009454,
+    "sharpe_ratio": 14.444296209494949,
+    "sortino_ratio": 45.678272888689946,
+    "total_return": 0.8724592477212849
+  },
+  "rolling_performance": {
+    "positive_window_rate": 0.9090909090909091,
+    "schema": "downside_performance_rolling_stability_v0_2",
+    "window_bars": 63,
+    "window_count": 11,
+    "windows": [
+      {
+        "end": "2018-03-30",
+        "max_drawdown": 0.007555990510841992,
+        "mean_daily_return": 0.0018018342246281965,
+        "positive_return": true,
+        "start": "2018-01-02",
+        "total_return": 0.1200339464207254
+      },
+      {
+        "end": "2018-06-27",
+        "max_drawdown": 0.005137386775386665,
+        "mean_daily_return": 0.0007216127865856429,
+        "positive_return": true,
+        "start": "2018-03-30",
+        "total_return": 0.04647599595782692
+      },
+      {
+        "end": "2018-09-24",
+        "max_drawdown": 0.0023905245872941627,
+        "mean_daily_return": 0.0014055145225161708,
+        "positive_return": true,
+        "start": "2018-06-27",
+        "total_return": 0.0924967417465179
+      },
+      {
+        "end": "2018-12-20",
+        "max_drawdown": 0.0022509539280328728,
+        "mean_daily_return": 0.0001885948956927559,
+        "positive_return": true,
+        "start": "2018-09-24",
+        "total_return": 0.011950952812970872
+      },
+      {
+        "end": "2019-03-19",
+        "max_drawdown": 0.00717099217459416,
+        "mean_daily_return": -5.467464231268354e-05,
+        "positive_return": false,
+        "start": "2018-12-20",
+        "total_return": -0.0034407708240423718
+      },
+      {
+        "end": "2019-06-14",
+        "max_drawdown": 0.0049661160805524185,
+        "mean_daily_return": 0.0020786991734367266,
+        "positive_return": true,
+        "start": "2019-03-19",
+        "total_return": 0.13976040646139376
+      },
+      {
+        "end": "2019-09-11",
+        "max_drawdown": 0.0,
+        "mean_daily_return": 0.0013871484783565997,
+        "positive_return": true,
+        "start": "2019-06-14",
+        "total_return": 0.0912534572601813
+      },
+      {
+        "end": "2019-12-09",
+        "max_drawdown": 0.00492195146936758,
+        "mean_daily_return": 0.00036781778154914267,
+        "positive_return": true,
+        "start": "2019-09-11",
+        "total_return": 0.023428225019182625
+      },
+      {
+        "end": "2020-03-05",
+        "max_drawdown": 0.007897376735009454,
+        "mean_daily_return": 7.457435466346228e-05,
+        "positive_return": true,
+        "start": "2019-12-09",
+        "total_return": 0.0047080631704101705
+      },
+      {
+        "end": "2020-06-02",
+        "max_drawdown": 0.0012509379933216547,
+        "mean_daily_return": 7.508629419455871e-05,
+        "positive_return": true,
+        "start": "2020-03-05",
+        "total_return": 0.004740943461282621
+      },
+      {
+        "end": "2020-08-28",
+        "max_drawdown": 0.001327933045213503,
+        "mean_daily_return": 0.0010117077943358325,
+        "positive_return": true,
+        "start": "2020-06-02",
+        "total_return": 0.06576077624159482
+      }
+    ],
+    "worst_window_drawdown": 0.007897376735009454,
+    "worst_window_return": -0.0034407708240423718
+  },
+  "schema": "downside_performance_statistical_confidence_report_v0_2",
+  "status": "passed",
+  "walk_forward": {
+    "folds": [
+      {
+        "cagr": 0.296880142980501,
+        "calmar_ratio": 39.29069822871159,
+        "end": "2018-12-19",
+        "fold_index": 0,
+        "max_drawdown": 0.007555990510841992,
+        "passed": true,
+        "start": "2018-01-02"
+      },
+      {
+        "cagr": 0.3247834674443655,
+        "calmar_ratio": 68.57743484022328,
+        "end": "2019-12-06",
+        "fold_index": 1,
+        "max_drawdown": 0.004736010732992124,
+        "passed": true,
+        "start": "2018-12-20"
+      },
+      {
+        "cagr": 0.1382185835380334,
+        "calmar_ratio": 32.15928813006733,
+        "end": "2020-11-24",
+        "fold_index": 2,
+        "max_drawdown": 0.004297936663865576,
+        "passed": true,
+        "start": "2019-12-09"
+      }
+    ],
+    "pass_rate": 1.0,
+    "passed": true,
+    "schema": "downside_performance_walk_forward_v1"
+  }
+}

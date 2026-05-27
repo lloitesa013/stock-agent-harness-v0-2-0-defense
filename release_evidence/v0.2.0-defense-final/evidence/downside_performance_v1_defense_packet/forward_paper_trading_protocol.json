@@ -1,0 +1,47 @@
+{
+  "candidate_config_fingerprint": "3db6469342df045f2a22949fc52ede51572145df8c0056c5b147fe16be74970d",
+  "candidate_strategy_id": "agentic_candidate_v1",
+  "checkpoints": [
+    "2026-06-26",
+    "2026-08-25",
+    "2026-11-23"
+  ],
+  "checks": {
+    "broker_routing_excluded": true,
+    "checkpoint_schedule_present": true,
+    "live_performance_claim_excluded": true,
+    "paper_only_mode": true,
+    "protocol_initialized": true,
+    "signal_logging_schema_present": true,
+    "strategy_config_frozen": true
+  },
+  "forward_start_date": "2026-05-27",
+  "frequency": "daily after market close or next available benchmark session",
+  "mode": "paper_signal_logging_only",
+  "non_claims": [
+    "No financial advice.",
+    "No live trading readiness claim.",
+    "No return guarantee or future performance claim.",
+    "No realized investor return claim.",
+    "No broker integration, order routing, or execution-readiness claim.",
+    "No universal market, strategy, or external-framework dominance claim.",
+    "No claim outside the included downside_performance_v1 benchmark suite."
+  ],
+  "recordkeeping": [
+    "Do not alter candidate parameters during the forward window.",
+    "Store every generated signal before subsequent price observations are scored.",
+    "Score 1-month, 3-month, and 6-month checkpoints against the frozen protocol.",
+    "Do not make live-performance or investor-return claims from this protocol until a forward report exists."
+  ],
+  "schema": "downside_performance_forward_paper_trading_protocol_v0_2",
+  "signal_schema": {
+    "date": "ISO-8601 trading date",
+    "generated_at_utc": "timestamp of signal generation",
+    "reason_codes": "deterministic guard and ranking reasons",
+    "risk_state": "risk_on | risk_off | cash",
+    "strategy_id": "agentic_candidate_v1",
+    "universe_snapshot_hash": "sha256 of the available paper-trading input universe",
+    "weights": "target paper weights by symbol"
+  },
+  "status": "initialized"
+}

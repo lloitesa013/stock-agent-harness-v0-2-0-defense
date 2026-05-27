@@ -1,0 +1,24 @@
+{
+  "checks": {
+    "calmar_top_ranked": true,
+    "claim_boundary_preserved": true,
+    "cost_stress_survived": true,
+    "data_quality_passed": true,
+    "drawdown_control_passed": true,
+    "hypothetical_backtest_disclosed": true,
+    "lookahead_audit_passed": true,
+    "negative_controls_detected": true,
+    "overfit_not_detected": true,
+    "return_beats_baselines": true,
+    "sharpe_top_three": true,
+    "walk_forward_passed": true
+  },
+  "claim_scope": {
+    "benchmark_suite": "downside_performance_v1",
+    "claim_id": "downside_adjusted_backtested_performance_v0_1",
+    "claim_limit": "SOTA-grade downside-adjusted hypothetical backtested performance under the included downside_performance_v1 benchmark only",
+    "performance_type": "hypothetical_backtested_performance"
+  },
+  "performance_claim_publishable": true,
+  "schema": "downside_performance_gate_v1"
+}

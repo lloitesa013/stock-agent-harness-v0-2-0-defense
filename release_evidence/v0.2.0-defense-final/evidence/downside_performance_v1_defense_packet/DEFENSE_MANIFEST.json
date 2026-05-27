@@ -1,0 +1,56 @@
+{
+  "benchmark_suite": "downside_performance_v1",
+  "claim_id": "downside_adjusted_backtested_performance_v0_1",
+  "defense_fingerprint": "a9a02b520f8c57920776b8e7f038c8255929a0bdedf51efff3390bad9f008543",
+  "defense_version": "v0.2.0-defense",
+  "files": [
+    {
+      "bytes": 1516,
+      "path": "DEFENSE_SUMMARY.md",
+      "sha256": "b5a5d5a4d7587f46d2c52c3018497e98df99672d51f33e5c360868b0f944578e"
+    },
+    {
+      "bytes": 4663,
+      "path": "baseline_fairness_report.json",
+      "sha256": "7d2f6bac6fb6b6e35e707745960d99bf2e22b58ec2caff731f7b4344339911a3"
+    },
+    {
+      "bytes": 2499,
+      "path": "data_lineage_bias_report.json",
+      "sha256": "4e5cd4243f23bfc09765e4a2c748f6b7af82e825b25d1c5f96b960322d7aa87c"
+    },
+    {
+      "bytes": 1577,
+      "path": "defense_gate.json",
+      "sha256": "248e80946dae4fdbbc10fd762cbefa7847542754ca54376e6c12da76a4643fa7"
+    },
+    {
+      "bytes": 2016,
+      "path": "forward_paper_trading_protocol.json",
+      "sha256": "1c9e024c9b88075da960308164f47413fab649c7c50991d50d327d74350cbf96"
+    },
+    {
+      "bytes": 7145,
+      "path": "statistical_confidence_report.json",
+      "sha256": "9792759166b5eb6b1920b6c9d08bb1065ef2e76d465132e300bd69824261dd9f"
+    },
+    {
+      "bytes": 2252,
+      "path": "strategy_freeze_report.json",
+      "sha256": "3b9bdcb975b60ccb924cded515333de8223a47d159d9e96e69e6d573a63a162c"
+    }
+  ],
+  "required_files": [
+    "strategy_freeze_report.json",
+    "data_lineage_bias_report.json",
+    "baseline_fairness_report.json",
+    "statistical_confidence_report.json",
+    "forward_paper_trading_protocol.json",
+    "defense_gate.json",
+    "DEFENSE_SUMMARY.md",
+    "DEFENSE_MANIFEST.json"
+  ],
+  "schema": "downside_performance_defense_manifest_v0_2",
+  "source_report_fingerprint": "b57afa3a51f0de6bb0eba045956800708298a567765c1d6f33da3709d0c780f6",
+  "status": "passed"
+}

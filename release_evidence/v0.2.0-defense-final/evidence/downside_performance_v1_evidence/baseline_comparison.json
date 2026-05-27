@@ -1,0 +1,58 @@
+{
+  "candidate_vs_buy_and_hold_spy": {
+    "cagr_delta": 0.2563731546749709,
+    "calmar_delta": 29.566074029208092,
+    "max_drawdown_delta": -0.2990233826101065,
+    "sharpe_delta": 14.861914123007894,
+    "total_return_multiple": 2.010629064669622
+  },
+  "candidate_vs_cash": {
+    "cagr_delta": 0.23289018499220626,
+    "calmar_delta": 29.489562522678295,
+    "max_drawdown_delta": 0.007897376735009454,
+    "sharpe_delta": 14.444296209494949,
+    "total_return_multiple": 1.872459247721285
+  },
+  "candidate_vs_equal_weight": {
+    "cagr_delta": 0.20088026716668828,
+    "calmar_delta": 29.294321352982994,
+    "max_drawdown_delta": -0.1560532791408673,
+    "sharpe_delta": 13.342403983354695,
+    "total_return_multiple": 1.703786067910271
+  },
+  "candidate_vs_mean_reversion": {
+    "cagr_delta": 0.21239831115670738,
+    "calmar_delta": 29.301279643020113,
+    "max_drawdown_delta": -0.10093818958254952,
+    "sharpe_delta": 13.751610645318415,
+    "total_return_multiple": 1.7620518373195817
+  },
+  "candidate_vs_simple_momentum": {
+    "cagr_delta": 0.020454343580348144,
+    "calmar_delta": 17.7731008878604,
+    "max_drawdown_delta": -0.010234022319852043,
+    "sharpe_delta": 0.7552751447758403,
+    "total_return_multiple": 1.0514001989686075
+  },
+  "candidate_vs_sma_crossover": {
+    "cagr_delta": 0.2750721208523279,
+    "calmar_delta": 29.674951024856682,
+    "max_drawdown_delta": -0.21963526614449824,
+    "sharpe_delta": 15.275366878162334,
+    "total_return_multiple": 2.1305367530398143
+  },
+  "candidate_vs_stock_harness_ma_cash": {
+    "cagr_delta": 0.06114925146266148,
+    "calmar_delta": 3.068954454342652,
+    "max_drawdown_delta": 0.001397112506217102,
+    "sharpe_delta": -0.0853956584761768,
+    "total_return_multiple": 1.1646373405694028
+  },
+  "candidate_vs_volatility_targeting": {
+    "cagr_delta": 0.14759326476758838,
+    "calmar_delta": 28.824944969586895,
+    "max_drawdown_delta": -0.12044247800982577,
+    "sharpe_delta": 11.644034365836403,
+    "total_return_multiple": 1.4652364990958477
+  }
+}

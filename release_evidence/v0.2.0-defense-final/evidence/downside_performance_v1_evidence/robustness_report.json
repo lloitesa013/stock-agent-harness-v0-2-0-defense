@@ -1,0 +1,204 @@
+{
+  "cost_slippage_stress": {
+    "cases": [
+      {
+        "cagr": 0.24000894487223645,
+        "calmar_ratio": 35.40431697490668,
+        "cost_bps": 0.0,
+        "max_drawdown": 0.006779086997846795,
+        "passed": true,
+        "slippage_bps": 0.0,
+        "total_return": 0.9050383400404183
+      },
+      {
+        "cagr": 0.23289018499220626,
+        "calmar_ratio": 29.489562522678295,
+        "cost_bps": 10.0,
+        "max_drawdown": 0.007897376735009454,
+        "passed": true,
+        "slippage_bps": 5.0,
+        "total_return": 0.8724592477212849
+      },
+      {
+        "cagr": 0.22343929271000063,
+        "calmar_ratio": 19.380842357529648,
+        "cost_bps": 25.0,
+        "max_drawdown": 0.011528874162850422,
+        "passed": true,
+        "slippage_bps": 10.0,
+        "total_return": 0.8297835716114685
+      },
+      {
+        "cagr": 0.20467694168061845,
+        "calmar_ratio": 10.218564260991542,
+        "cost_bps": 50.0,
+        "max_drawdown": 0.020029911879299367,
+        "passed": true,
+        "slippage_bps": 25.0,
+        "total_return": 0.7469918467935317
+      }
+    ],
+    "passed": true,
+    "schema": "downside_performance_cost_stress_v1"
+  },
+  "data_quality": {
+    "assets": {
+      "DEFENSIVE_SYN": {
+        "bar_count": 756,
+        "error_count": 0,
+        "verdict": "KEEP",
+        "warning_count": 0
+      },
+      "QUALITY_SYN": {
+        "bar_count": 756,
+        "error_count": 0,
+        "verdict": "KEEP",
+        "warning_count": 0
+      },
+      "SPY_SYN": {
+        "bar_count": 756,
+        "error_count": 0,
+        "verdict": "KEEP",
+        "warning_count": 0
+      },
+      "TREND_SYN": {
+        "bar_count": 756,
+        "error_count": 0,
+        "verdict": "KEEP",
+        "warning_count": 0
+      },
+      "WHIPSAW_SYN": {
+        "bar_count": 756,
+        "error_count": 0,
+        "verdict": "KEEP",
+        "warning_count": 0
+      }
+    },
+    "passed": true,
+    "schema": "downside_performance_data_quality_v1"
+  },
+  "lookahead_audit": {
+    "changed_decisions": 0,
+    "checked_decisions": 754,
+    "passed": true,
+    "reasons": [
+      "weights_invariant_to_future_mutation"
+    ],
+    "schema": "downside_performance_lookahead_audit_v1"
+  },
+  "parameter_sensitivity": {
+    "max_calmar_ratio": 30.713190288802526,
+    "min_calmar_ratio": 28.36854389111478,
+    "pass_rate": 1.0,
+    "passed": true,
+    "schema": "downside_performance_parameter_sensitivity_v1",
+    "variants": [
+      {
+        "cagr": 0.24255363444468347,
+        "calmar_ratio": 30.713190288802526,
+        "max_drawdown": 0.007897376735008677,
+        "momentum_window": 42,
+        "passed": true,
+        "trend_window": 60
+      },
+      {
+        "cagr": 0.23289018499220626,
+        "calmar_ratio": 29.489562522678295,
+        "max_drawdown": 0.007897376735009454,
+        "momentum_window": 42,
+        "passed": true,
+        "trend_window": 80
+      },
+      {
+        "cagr": 0.22403707853175292,
+        "calmar_ratio": 28.36854389111478,
+        "max_drawdown": 0.007897376735008343,
+        "momentum_window": 42,
+        "passed": true,
+        "trend_window": 100
+      },
+      {
+        "cagr": 0.24255363444468347,
+        "calmar_ratio": 30.713190288802526,
+        "max_drawdown": 0.007897376735008677,
+        "momentum_window": 63,
+        "passed": true,
+        "trend_window": 60
+      },
+      {
+        "cagr": 0.23289018499220626,
+        "calmar_ratio": 29.489562522678295,
+        "max_drawdown": 0.007897376735009454,
+        "momentum_window": 63,
+        "passed": true,
+        "trend_window": 80
+      },
+      {
+        "cagr": 0.22403707853175292,
+        "calmar_ratio": 28.36854389111478,
+        "max_drawdown": 0.007897376735008343,
+        "momentum_window": 63,
+        "passed": true,
+        "trend_window": 100
+      },
+      {
+        "cagr": 0.24255363444468347,
+        "calmar_ratio": 30.713190288802526,
+        "max_drawdown": 0.007897376735008677,
+        "momentum_window": 84,
+        "passed": true,
+        "trend_window": 60
+      },
+      {
+        "cagr": 0.23289018499220626,
+        "calmar_ratio": 29.489562522678295,
+        "max_drawdown": 0.007897376735009454,
+        "momentum_window": 84,
+        "passed": true,
+        "trend_window": 80
+      },
+      {
+        "cagr": 0.22403707853175292,
+        "calmar_ratio": 28.36854389111478,
+        "max_drawdown": 0.007897376735008343,
+        "momentum_window": 84,
+        "passed": true,
+        "trend_window": 100
+      }
+    ]
+  },
+  "walk_forward": {
+    "folds": [
+      {
+        "cagr": 0.296880142980501,
+        "calmar_ratio": 39.29069822871159,
+        "end": "2018-12-19",
+        "fold_index": 0,
+        "max_drawdown": 0.007555990510841992,
+        "passed": true,
+        "start": "2018-01-02"
+      },
+      {
+        "cagr": 0.3247834674443655,
+        "calmar_ratio": 68.57743484022328,
+        "end": "2019-12-06",
+        "fold_index": 1,
+        "max_drawdown": 0.004736010732992124,
+        "passed": true,
+        "start": "2018-12-20"
+      },
+      {
+        "cagr": 0.1382185835380334,
+        "calmar_ratio": 32.15928813006733,
+        "end": "2020-11-24",
+        "fold_index": 2,
+        "max_drawdown": 0.004297936663865576,
+        "passed": true,
+        "start": "2019-12-09"
+      }
+    ],
+    "pass_rate": 1.0,
+    "passed": true,
+    "schema": "downside_performance_walk_forward_v1"
+  }
+}

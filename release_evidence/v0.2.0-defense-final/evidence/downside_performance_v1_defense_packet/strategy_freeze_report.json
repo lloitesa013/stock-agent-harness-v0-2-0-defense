@@ -1,0 +1,66 @@
+{
+  "baseline_count": 8,
+  "candidate_config": {
+    "family": "candidate",
+    "is_candidate": true,
+    "label": "Agentic downside-guarded momentum v1",
+    "params": {
+      "drawdown_guard": 0.04,
+      "drawdown_window": 42,
+      "max_position_weight": 1.0,
+      "momentum_window": 63,
+      "risk_off_symbol": "DEFENSIVE_SYN",
+      "risk_off_weight": 0.25,
+      "short_guard_window": 3,
+      "top_n": 1,
+      "trend_window": 80,
+      "vol_guard": 0.02,
+      "vol_window": 21
+    },
+    "strategy_id": "agentic_candidate_v1"
+  },
+  "candidate_config_fingerprint": "3db6469342df045f2a22949fc52ede51572145df8c0056c5b147fe16be74970d",
+  "candidate_count": 1,
+  "candidate_strategy_id": "agentic_candidate_v1",
+  "checks": {
+    "candidate_config_frozen_by_source_registry": true,
+    "candidate_config_present": true,
+    "candidate_fingerprint_present": true,
+    "candidate_strategy_id_fixed": true,
+    "final_test_after_freeze_statement_recorded": true,
+    "strategy_registry_fingerprint_present": true,
+    "train_validation_test_partition_recorded": true
+  },
+  "freeze_statement": "The published agentic_candidate_v1 configuration is recorded by fingerprint before the defense packet evaluates the final test partition. Re-running the packet verifies that the strategy registry and candidate parameters are unchanged.",
+  "partitions": {
+    "test": {
+      "bar_count": 252,
+      "end": "2020-11-24",
+      "start": "2019-12-09"
+    },
+    "train": {
+      "bar_count": 252,
+      "end": "2018-12-19",
+      "start": "2018-01-02"
+    },
+    "validation": {
+      "bar_count": 252,
+      "end": "2019-12-06",
+      "start": "2018-12-20"
+    }
+  },
+  "rejected_or_adversarial_controls_recorded": [
+    "leaky_future_momentum",
+    "overfit_trap",
+    "extreme_cost_mutation"
+  ],
+  "schema": "downside_performance_strategy_freeze_report_v0_2",
+  "source_files": [
+    "angelos_os/performance_harness.py",
+    "benchmarks/downside_performance_v1/claim_contract.json",
+    "ops/run_downside_performance_claim_gate.py"
+  ],
+  "status": "passed",
+  "strategy_count": 9,
+  "strategy_registry_fingerprint": "63ddb0d20bdd358996f9f4c6cfb405afc3106cffe6005fba2806bd49f524f881"
+}

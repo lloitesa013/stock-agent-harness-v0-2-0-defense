@@ -1,0 +1,134 @@
+{
+  "checks": {
+    "claim_contract": {
+      "checks": {
+        "benchmark_suite": true,
+        "claim_id": true,
+        "official_claim_packet_checks_present": true,
+        "publication_assertions_present": true,
+        "schema": true,
+        "status_when_supported": true,
+        "universal_dominance_non_claim": true
+      },
+      "passed": true
+    },
+    "evidence_manifest": {
+      "checks": {
+        "benchmark_suite": true,
+        "claim_id": true,
+        "schema": true,
+        "status": true
+      },
+      "passed": true
+    },
+    "official_claim_gate": {
+      "checks": {
+        "evidence_packet_verified_for_publication": true,
+        "full_release_gate_official_ready": true,
+        "official_claim_publishable": true,
+        "release_candidate_replayed_for_publication": true,
+        "release_candidate_verified_for_publication": true,
+        "schema": true,
+        "status": true
+      },
+      "passed": true
+    },
+    "official_release_candidate_replay": {
+      "checks": {
+        "all_assertions_passed": true,
+        "requires_official_claim_ready": true,
+        "requires_release_gate_json": true,
+        "rust_benchmark_cli": true,
+        "rust_not_skipped": true,
+        "rust_unit_tests": true,
+        "schema": true,
+        "status": true
+      },
+      "passed": true
+    },
+    "official_release_gate": {
+      "checks": {
+        "claim_supported": true,
+        "official_claim_ready": true,
+        "overall_status": true,
+        "release_candidate_replayed": true,
+        "rust_benchmark_cli": true,
+        "rust_status": true,
+        "rust_unit_tests": true,
+        "schema": true
+      },
+      "passed": true
+    },
+    "release_candidate_manifest": {
+      "checks": {
+        "benchmark_suite": true,
+        "claim_id": true,
+        "schema": true,
+        "status": true
+      },
+      "passed": true
+    },
+    "release_manifest": {
+      "checks": {
+        "benchmark_suite": true,
+        "claim_id": true,
+        "schema": true,
+        "status": true
+      },
+      "passed": true
+    },
+    "required_inputs_present": {
+      "missing": [],
+      "passed": true
+    }
+  },
+  "claim_scope": {
+    "benchmark_suite": "downside_verification_v1",
+    "claim_id": "downside_verification_sota_grade_v0_1",
+    "claim_limit": "SOTA-grade deterministic verification coverage only",
+    "publication_requirement": "official_claim_publishable: true"
+  },
+  "file_count": 7,
+  "files": [
+    {
+      "bytes": 2695,
+      "path": "claim_contract.json",
+      "sha256": "582dc2282b5a3c846c068d53938c3a0a1923e02553f2ccf5f99678e43673bfc6"
+    },
+    {
+      "bytes": 2765,
+      "path": "evidence_manifest.json",
+      "sha256": "bddea58aaf85281518de714c867e1076aa9e1ffb34f4ad608b863646d72598b4"
+    },
+    {
+      "bytes": 20922,
+      "path": "official_claim_gate.json",
+      "sha256": "316f9bcc05977eddf0985af0a757f86ecf192ef79292345433150a52c8b38d30"
+    },
+    {
+      "bytes": 44079,
+      "path": "official_release_candidate_replay.json",
+      "sha256": "51c385840aac2b3c6c5fea155a70fd28ff0b51a39dd9715b18623e81a58c1400"
+    },
+    {
+      "bytes": 116787,
+      "path": "official_release_gate.json",
+      "sha256": "652f6dc8497aa080ac6d0e7a8aff191c021e986b8e96cf8722e1b2d49903dc36"
+    },
+    {
+      "bytes": 1565,
+      "path": "release_candidate_manifest.json",
+      "sha256": "f2c71a9218a190580f57e6f20a8f80740c331a8f2f3bd1833533e5cbb42b5a74"
+    },
+    {
+      "bytes": 13087,
+      "path": "release_manifest.json",
+      "sha256": "27f92496e5c7995145c653e3df657205a7a75e378f7127ceb946976a9b4f1a73"
+    }
+  ],
+  "generated_at_unix": 1779828402,
+  "output_dir": "C:\\CARLA demo\\dist\\stock_harness_official_claim_packet",
+  "schema": "stock_harness_official_claim_packet_v1",
+  "source_root": "C:\\CARLA demo",
+  "status": "passed"
+}

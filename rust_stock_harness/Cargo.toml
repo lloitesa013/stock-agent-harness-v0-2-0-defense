@@ -1,0 +1,12 @@
+[package]
+name = "rust_stock_harness"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+name = "stock-harness-benchmark"
+path = "src/main.rs"

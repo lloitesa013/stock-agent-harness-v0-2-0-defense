@@ -1,0 +1,15 @@
+{
+  "benchmark": "stock_harness_no_dependency_oracle_v1",
+  "benchmark_suite": "downside_verification_v1",
+  "claim_id": "downside_verification_sota_grade_v0_1",
+  "expected": {
+    "all_passed": true,
+    "oracle_case_count": 4,
+    "engine_parity_diff_count": 0,
+    "engine_parity_compared_order_intents": 2,
+    "calendar_expected_sessions": 3,
+    "adjusted_ohlc_checks_applied": true,
+    "multi_asset_case_artifact_count": 2,
+    "stress_matrix_case_count": 5
+  }
+}

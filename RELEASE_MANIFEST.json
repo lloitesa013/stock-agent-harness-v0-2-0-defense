@@ -1,0 +1,373 @@
+{
+  "claim_scope": {
+    "benchmark_suite": "downside_verification_v1",
+    "claim_contract_path": "benchmarks/downside_verification_v1/claim_contract.json",
+    "claim_id": "downside_verification_sota_grade_v0_1",
+    "claim_limit": "SOTA-grade deterministic verification coverage only",
+    "non_claims": [
+      "No financial advice.",
+      "No live trading readiness claim.",
+      "No order routing or broker integration claim.",
+      "No investment-performance or alpha-generation claim.",
+      "No universal external-framework dominance claim."
+    ]
+  },
+  "file_count": 70,
+  "files": [
+    {
+      "bytes": 1098,
+      "path": "LICENSE",
+      "sha256": "77c62e8ede4d25714c269c3f37e1eb228a580b419f5746da1fdfd1c2f41f4685"
+    },
+    {
+      "bytes": 5863,
+      "path": "README.md",
+      "sha256": "fe299d70801965e4db0f52a801982a2e329a1c235a8d955ed3f7026f2e0531f6"
+    },
+    {
+      "bytes": 5344,
+      "path": ".github/workflows/stock-harness-ci.yml",
+      "sha256": "0f56164c11dde771bf3289434c446ca6ae36fd95381458733733dd6045c7e74e"
+    },
+    {
+      "bytes": 5558,
+      "path": "angelos_os/__init__.py",
+      "sha256": "a179187255b97d1d4c3ed039d325990efe143d65aed8ecfdb0e1c983610f6340"
+    },
+    {
+      "bytes": 26585,
+      "path": "angelos_os/agent_harness.py",
+      "sha256": "8c827f605ce39a079eee842460e4a06f1a67c79938f0e44e24c30e2d48441084"
+    },
+    {
+      "bytes": 32019,
+      "path": "angelos_os/performance_defense.py",
+      "sha256": "7929ef41dacb2af9e440b0871416dd6d24436790a453f40ddfe08b48f755a7c9"
+    },
+    {
+      "bytes": 50484,
+      "path": "angelos_os/performance_harness.py",
+      "sha256": "98afa88eac5df3288d6cceec6b8645c434a5f45d1d5ce872f9477c901006fbfd"
+    },
+    {
+      "bytes": 10141,
+      "path": "angelos_os/engine.py",
+      "sha256": "5519be751930fe83b7e0d345d59b67036ae5e9ccd7de66661e9fa5607cb710c1"
+    },
+    {
+      "bytes": 29843,
+      "path": "angelos_os/profiles.py",
+      "sha256": "e84e48c007ea130675d96231cb4a6ea61582afb93839cd2b044b2af812780e51"
+    },
+    {
+      "bytes": 3817,
+      "path": "angelos_os/providers.py",
+      "sha256": "8da7f7e8c08820d1a189060120de7bcc90dd07e9b5aae32ca84f89ee97e30ced"
+    },
+    {
+      "bytes": 5719,
+      "path": "angelos_os/safety.py",
+      "sha256": "5dc33ef069b18d572e572f628257730b43fb3cb31f4185dd29593e30b06a083a"
+    },
+    {
+      "bytes": 13776,
+      "path": "angelos_os/schemas.py",
+      "sha256": "2c16f18e6984fa8d4441ad4a55d9e50d988fa2d5e0e3ec590f58f6e9f6401a6e"
+    },
+    {
+      "bytes": 14361,
+      "path": "angelos_os/score_core.py",
+      "sha256": "25c808bb579a52fcc2fb0636627ab8e096ea17f154658f2a62f3fd4f338a652c"
+    },
+    {
+      "bytes": 151211,
+      "path": "angelos_os/stock_harness.py",
+      "sha256": "55af40c2bad8727ee5c2f4167b54f0eff4637e40c33fbedce77a28c89ff099fb"
+    },
+    {
+      "bytes": 15396,
+      "path": "angelos_os/validation.py",
+      "sha256": "59edcaf3f84572596142dda14af37641c9ebd072bb0bc3d23e589c9ac7741951"
+    },
+    {
+      "bytes": 90,
+      "path": "angelos_os/version.py",
+      "sha256": "2df13ff5c7420ca7740b7e170e315f80c5403d0687ec401fc7a76467c6677227"
+    },
+    {
+      "bytes": 20050,
+      "path": "ops/benchmark_stock_harness.py",
+      "sha256": "cf5900ebd14a530969db983072d8841c6fb946b259a3b288b3e71ff5f7f95888"
+    },
+    {
+      "bytes": 11924,
+      "path": "ops/compare_stock_harness_baselines.py",
+      "sha256": "feef5f007de63133c968231fe95bbfe857a1a402160bd8e8f2677497b8c588fc"
+    },
+    {
+      "bytes": 43916,
+      "path": "ops/compare_stock_harness_global_frameworks.py",
+      "sha256": "2215caeb620b7989fe554f83070c785fcafde5801570121028f15e193453d2a3"
+    },
+    {
+      "bytes": 3256,
+      "path": "ops/run_stock_agent_harness.py",
+      "sha256": "80378fed2b1690e010b6c06bd6757386bb34b040f7a6965de1d62d6fec71fa25"
+    },
+    {
+      "bytes": 7283,
+      "path": "ops/run_stock_agent_harness_claim_gate.py",
+      "sha256": "38e785e1809f984e577ef98a43afaa76676daab93b6d85e499d5cfffaa00179d"
+    },
+    {
+      "bytes": 2220,
+      "path": "ops/run_downside_performance_benchmark.py",
+      "sha256": "d4fa346f6454ce00755f8cba929261821766a7d8264a5cd02847026d059d21ed"
+    },
+    {
+      "bytes": 7935,
+      "path": "ops/run_downside_performance_claim_gate.py",
+      "sha256": "a9e6a26892d69e164f5d0231189a37197f248c7f48d61e081fe8810822a878ff"
+    },
+    {
+      "bytes": 3594,
+      "path": "ops/build_downside_performance_defense_packet.py",
+      "sha256": "3290ad38c6e3bde4fe496e436dba87fb89c5b9e1b93aa9e4d33a192174551c6b"
+    },
+    {
+      "bytes": 1177,
+      "path": "ops/verify_downside_performance_defense_packet.py",
+      "sha256": "1d9c942990624f2134d7577d192e4c1da24fc49181629af057064a587b6e9ca0"
+    },
+    {
+      "bytes": 38396,
+      "path": "ops/build_downside_performance_public_artifacts.py",
+      "sha256": "3369bae345cb33ee25c279b32c069c0221a220131f5701d6cfd75a4f579c8d49"
+    },
+    {
+      "bytes": 14372,
+      "path": "ops/seal_v0_2_0_defense_release.py",
+      "sha256": "2bd6286f2147ca2f22308de94c5cbac66f5c7a845f7bde30fe81199aac877cee"
+    },
+    {
+      "bytes": 6555,
+      "path": "ops/run_stock_harness_global_claim_gate.py",
+      "sha256": "099bab8c6f8583c3eef8fcd62be4ecaa7468e5934c235078568143084b7df82b"
+    },
+    {
+      "bytes": 9949,
+      "path": "ops/build_stock_harness_global_claim_packet.py",
+      "sha256": "067b33bbb5086a9716ace3cee31e672b01041ac223c0045e45e33588045d8eae"
+    },
+    {
+      "bytes": 8709,
+      "path": "ops/verify_stock_harness_global_claim_packet.py",
+      "sha256": "389b8696c111dc24734c847638a8a2eccf3796a1b028fd9bcebcf134a130404e"
+    },
+    {
+      "bytes": 19039,
+      "path": "ops/run_stock_harness_release_gate.py",
+      "sha256": "9f216ec4c677b3e5330c7a7a44ebc7e2ffa4a9456a8c9f4753d866f8f04ab2fe"
+    },
+    {
+      "bytes": 13331,
+      "path": "ops/run_stock_harness_official_claim_gate.py",
+      "sha256": "92e77c7e70f1143b6e1488fa47690fac4fa4acb177b5e77a557ef7d9221c1180"
+    },
+    {
+      "bytes": 8038,
+      "path": "ops/build_stock_harness_release_bundle.py",
+      "sha256": "bbcde099ed75147bbf5f9bc0062e955b7972ad126afc404115f9f1379567d5c1"
+    },
+    {
+      "bytes": 8376,
+      "path": "ops/build_stock_harness_evidence_packet.py",
+      "sha256": "07484c50f3b1156b3bdcfb8279fe12b19fc0ec79491f8d85e784e896d811fa44"
+    },
+    {
+      "bytes": 10301,
+      "path": "ops/verify_stock_harness_evidence_packet.py",
+      "sha256": "5fac0033749acd6e81f1cd03048cfb9fd83a19736c1bfe807d610fccccb1e0ea"
+    },
+    {
+      "bytes": 5852,
+      "path": "ops/build_stock_harness_release_candidate.py",
+      "sha256": "637f07e263d3d18d84b8567635cb55b63a1e779e427111ec499201a9c5d818af"
+    },
+    {
+      "bytes": 8741,
+      "path": "ops/verify_stock_harness_release_candidate.py",
+      "sha256": "2c3b0ed1640f8e2f61dfd7deb6ce2fff09320d196d447976fab81b64475e301e"
+    },
+    {
+      "bytes": 13854,
+      "path": "ops/replay_stock_harness_release_candidate.py",
+      "sha256": "a44efd78719930387f1634681b73ac852a260305a773b3f98d96c7af9274d099"
+    },
+    {
+      "bytes": 13079,
+      "path": "ops/build_stock_harness_official_claim_packet.py",
+      "sha256": "c950300ec9e4708f1363da03ad6b7d1a73393ff8e4b21532c050d1877c713b6a"
+    },
+    {
+      "bytes": 10372,
+      "path": "ops/verify_stock_harness_official_claim_packet.py",
+      "sha256": "24a71466030baad0b977f32a5ae810a6441e346a531279219ee5aea14a0f20b9"
+    },
+    {
+      "bytes": 18620,
+      "path": "ops/audit_stock_harness_release.py",
+      "sha256": "56fb0e91abd28ff06866af221fe5336b594100e014fb4d179a2d18786ea41e4c"
+    },
+    {
+      "bytes": 5166,
+      "path": "tests/test_downside_performance_harness.py",
+      "sha256": "70bb45855ff47fb1c51c6773a5b1b8be652a705c7a5e0d1c7a0bb64570d09480"
+    },
+    {
+      "bytes": 3175,
+      "path": "tests/test_downside_performance_defense.py",
+      "sha256": "a8e6fa404b23c010b537d4f32d923c4316d6e8f9774288b321c200da947aec3e"
+    },
+    {
+      "bytes": 4071,
+      "path": "tests/test_stock_agent_harness.py",
+      "sha256": "12f8c683e779b89fb95805b039d9b947dba36703ed787abb438aadddd7a90d89"
+    },
+    {
+      "bytes": 115091,
+      "path": "tests/test_stock_harness.py",
+      "sha256": "20c723829934cf0c2ecf60ceaeb14c8042ed9e1ef28a564150cdf982011b60a0"
+    },
+    {
+      "bytes": 1253,
+      "path": "benchmarks/downside_verification_v1/README.md",
+      "sha256": "821e45667e8d9c7d148de35f6258c46584e047c2f62896f24f663a32b45d9177"
+    },
+    {
+      "bytes": 472,
+      "path": "benchmarks/downside_verification_v1/expected_summary.json",
+      "sha256": "f88594f966bbd6960038c100f24b057b6bbb86baeb2e30dc3e3d412e6de3b4ba"
+    },
+    {
+      "bytes": 2695,
+      "path": "benchmarks/downside_verification_v1/claim_contract.json",
+      "sha256": "582dc2282b5a3c846c068d53938c3a0a1923e02553f2ccf5f99678e43673bfc6"
+    },
+    {
+      "bytes": 809,
+      "path": "benchmarks/global_verification_v1/README.md",
+      "sha256": "b0da3b672225ef0c0efc86797bc8f90f46ef54645db8376637ec0cb59b9bc554"
+    },
+    {
+      "bytes": 2356,
+      "path": "benchmarks/global_verification_v1/claim_contract.json",
+      "sha256": "58f4f30a7d30e2be44d4088c663e665a1629a50e8f65e89160be1316472ec168"
+    },
+    {
+      "bytes": 861,
+      "path": "benchmarks/agentic_verification_v1/README.md",
+      "sha256": "79b097a92a17f538888d8ad43cab942021883cd8534d73ac9515a34826a64e94"
+    },
+    {
+      "bytes": 1935,
+      "path": "benchmarks/agentic_verification_v1/claim_contract.json",
+      "sha256": "7e9608e02d6390823c9610cc9a55f983dc573e71f98a3d0b8904ef75af0252c1"
+    },
+    {
+      "bytes": 847,
+      "path": "benchmarks/downside_performance_v1/README.md",
+      "sha256": "5f1dd026567a9815b112d8f8c29600a44d1a7bbb199e92955afd66c9f351fae3"
+    },
+    {
+      "bytes": 2800,
+      "path": "benchmarks/downside_performance_v1/claim_contract.json",
+      "sha256": "23a93208d6f268910e0090a2ab82c1d76143dbd7056b1cae164d08e13344c391"
+    },
+    {
+      "bytes": 4425,
+      "path": "docs/BENCHMARK.md",
+      "sha256": "af94ce2bf1aa3683c8e8e28f6879989ecaef8e10b75e1eb83c804d0b7f66468a"
+    },
+    {
+      "bytes": 3847,
+      "path": "docs/CLAIMS.md",
+      "sha256": "7391f746ec54a538939c1b25f944614046dbfa7f449b438071db6d683e6d4f4a"
+    },
+    {
+      "bytes": 4897,
+      "path": "docs/FIRST_TIME_READER_GUIDE_KO.md",
+      "sha256": "0b6a65720b4d5b1cee1ce5d784f369299b427cc13b6bed40e08526c5f549e797"
+    },
+    {
+      "bytes": 1521,
+      "path": "docs/LIMITATIONS.md",
+      "sha256": "cb9215300c848c6b89b1b9fe30b8034b10d3383f2db6479402d10d18da3b660f"
+    },
+    {
+      "bytes": 1034,
+      "path": "docs/PERFORMANCE_BENCHMARK_METHOD.md",
+      "sha256": "598a0abac1bcd12fc0ed4f74682cd3a618faa8d76aa05b4a4273cdd8cb096e2a"
+    },
+    {
+      "bytes": 791,
+      "path": "docs/PERFORMANCE_CLAIMS.md",
+      "sha256": "9d33706b824e9047830caed891d7c215cac9b6f95885b6361633bc07c91bc89a"
+    },
+    {
+      "bytes": 2189,
+      "path": "docs/PERFORMANCE_DEFENSE.md",
+      "sha256": "a989b6c3c40c101243121aaa0c5aa3c8dda484441eef89a658bfa1ca82670c25"
+    },
+    {
+      "bytes": 459,
+      "path": "docs/PERFORMANCE_NON_CLAIMS.md",
+      "sha256": "53b41927d207ba09cd8bc66331d6291e6ca81db6f8729b2508b9bbafac61c454"
+    },
+    {
+      "bytes": 8004,
+      "path": "docs/RELEASE_GATE.md",
+      "sha256": "22dc9deb0323507cdd042d218dee4fc16d4f56609600c7160c2713984d0c8f63"
+    },
+    {
+      "bytes": 1305,
+      "path": "docs/THREAT_MODEL.md",
+      "sha256": "4e9fe208ad211f9b7a337509d4973f12452a534b7cf1d0c4c27a8a57b31012ca"
+    },
+    {
+      "bytes": 20833,
+      "path": "paper/SOTA_CLAIM_TECHNICAL_REPORT.md",
+      "sha256": "27fb836d055d7663f9147651e9e9d1a14dbb7a65df5ede14cedf8a2749cde2a9"
+    },
+    {
+      "bytes": 162,
+      "path": "rust_stock_harness/Cargo.lock",
+      "sha256": "63caa7d50c61a946c07b842484cc3b4c164fbdce9103c7beb73c2409627723ef"
+    },
+    {
+      "bytes": 179,
+      "path": "rust_stock_harness/Cargo.toml",
+      "sha256": "c085c9a470c57ebe8708cd14ce93fe4629bdb689f344a214b9155979d59b7761"
+    },
+    {
+      "bytes": 926,
+      "path": "rust_stock_harness/README.md",
+      "sha256": "93dfd08c61b5379fdefda4bd4c5cf26f0487545bcb4073b82927df3380de0148"
+    },
+    {
+      "bytes": 35570,
+      "path": "rust_stock_harness/src/lib.rs",
+      "sha256": "a50750a8e9220ecff007b301a71a6c68a146264793eda5d3f83d968b4a5abdc0"
+    },
+    {
+      "bytes": 309,
+      "path": "rust_stock_harness/src/main.rs",
+      "sha256": "87c66b5de90eb3e831be785ff4b35502f1bf8680d4536fd60f096d0c3f17e5a3"
+    }
+  ],
+  "generated_at_unix": 1779828370,
+  "output_dir": "C:\\CARLA demo\\dist\\stock_harness_release",
+  "schema": "stock_harness_release_bundle_v1",
+  "source_root": "C:\\CARLA demo",
+  "status": "passed"
+}

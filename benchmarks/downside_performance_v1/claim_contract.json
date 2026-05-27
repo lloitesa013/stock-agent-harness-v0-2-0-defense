@@ -1,0 +1,80 @@
+{
+  "schema": "downside_performance_claim_contract_v1",
+  "claim_id": "downside_adjusted_backtested_performance_v0_1",
+  "benchmark_suite": "downside_performance_v1",
+  "status_when_supported": "supported_for_included_benchmark_suite",
+  "claim_limit": "SOTA-grade downside-adjusted hypothetical backtested performance under the included downside_performance_v1 benchmark only",
+  "positive_claim": "Stock Agent Harness demonstrates SOTA-grade downside-adjusted hypothetical backtested performance on the included deterministic downside_performance_v1 benchmark, outperforming included baselines on return, drawdown control, and risk-adjusted robustness metrics.",
+  "candidate_strategy_id": "agentic_candidate_v1",
+  "non_claims": [
+    "No financial advice.",
+    "No live trading readiness claim.",
+    "No return guarantee or future performance claim.",
+    "No realized investor return claim.",
+    "No broker integration, order routing, or execution-readiness claim.",
+    "No universal market, strategy, or external-framework dominance claim.",
+    "No claim outside the included downside_performance_v1 benchmark suite."
+  ],
+  "required_strategies": [
+    "cash",
+    "buy_and_hold_spy",
+    "equal_weight",
+    "sma_crossover",
+    "simple_momentum",
+    "mean_reversion",
+    "volatility_targeting",
+    "stock_harness_ma_cash",
+    "agentic_candidate_v1"
+  ],
+  "required_metrics": [
+    "total_return",
+    "return_multiple",
+    "cagr",
+    "annualized_return",
+    "max_drawdown",
+    "volatility",
+    "downside_deviation",
+    "sharpe_ratio",
+    "sortino_ratio",
+    "calmar_ratio",
+    "worst_month",
+    "worst_year",
+    "total_turnover",
+    "average_exposure"
+  ],
+  "required_performance_gate_assertions": [
+    "performance_report_schema_valid",
+    "claim_contract_scope_preserved",
+    "all_required_strategies_executed",
+    "required_metrics_present",
+    "candidate_total_return_top_ranked",
+    "candidate_cagr_beats_baselines",
+    "candidate_calmar_top_ranked",
+    "candidate_drawdown_control_passed",
+    "walk_forward_passed",
+    "cost_stress_survived",
+    "lookahead_audit_passed",
+    "data_quality_passed",
+    "negative_controls_detected",
+    "performance_gate_publishable",
+    "deterministic_replay_fingerprint_stable",
+    "evidence_packet_manifest_passed",
+    "non_claims_preserved"
+  ],
+  "evidence_packet_required_files": [
+    "metrics.json",
+    "equity_curves.csv",
+    "trades.csv",
+    "baseline_comparison.json",
+    "robustness_report.json",
+    "performance_gate.json",
+    "claim_contract.json",
+    "PERFORMANCE_MANIFEST.json"
+  ],
+  "official_policy": {
+    "network_required": false,
+    "external_api_required": false,
+    "data_type": "deterministic_synthetic_ohlcv",
+    "performance_type": "hypothetical_backtested_performance"
+  }
+}

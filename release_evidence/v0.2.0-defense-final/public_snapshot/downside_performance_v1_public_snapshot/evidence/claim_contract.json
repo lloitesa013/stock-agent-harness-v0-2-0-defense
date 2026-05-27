@@ -1,0 +1,42 @@
+{
+  "benchmark_suite": "downside_performance_v1",
+  "claim_id": "downside_adjusted_backtested_performance_v0_1",
+  "claim_limit": "SOTA-grade downside-adjusted hypothetical backtested performance under the included downside_performance_v1 benchmark only",
+  "non_claims": [
+    "No financial advice.",
+    "No live trading readiness claim.",
+    "No return guarantee or future performance claim.",
+    "No realized investor return claim.",
+    "No broker integration, order routing, or execution-readiness claim.",
+    "No universal market, strategy, or external-framework dominance claim.",
+    "No claim outside the included downside_performance_v1 benchmark suite."
+  ],
+  "positive_claim": "Stock Agent Harness demonstrates SOTA-grade downside-adjusted hypothetical backtested performance on the included deterministic downside_performance_v1 benchmark, outperforming included baselines on return, drawdown control, and risk-adjusted robustness metrics.",
+  "required_gate_checks": [
+    "hypothetical_backtest_disclosed",
+    "return_beats_baselines",
+    "drawdown_control_passed",
+    "calmar_top_ranked",
+    "sharpe_top_three",
+    "walk_forward_passed",
+    "cost_stress_survived",
+    "lookahead_audit_passed",
+    "data_quality_passed",
+    "overfit_not_detected",
+    "negative_controls_detected",
+    "claim_boundary_preserved"
+  ],
+  "required_strategies": [
+    "cash",
+    "buy_and_hold_spy",
+    "equal_weight",
+    "sma_crossover",
+    "simple_momentum",
+    "mean_reversion",
+    "volatility_targeting",
+    "stock_harness_ma_cash",
+    "agentic_candidate_v1"
+  ],
+  "schema": "downside_performance_claim_contract_v1",
+  "status_when_supported": "supported_for_included_benchmark_suite"
+}

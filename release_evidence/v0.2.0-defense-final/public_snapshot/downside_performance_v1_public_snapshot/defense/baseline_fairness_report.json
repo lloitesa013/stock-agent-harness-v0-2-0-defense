@@ -1,0 +1,177 @@
+{
+  "baseline_ids": [
+    "cash",
+    "buy_and_hold_spy",
+    "equal_weight",
+    "sma_crossover",
+    "simple_momentum",
+    "mean_reversion",
+    "volatility_targeting",
+    "stock_harness_ma_cash"
+  ],
+  "checks": {
+    "baseline_configs_public": true,
+    "candidate_not_compared_to_missing_baselines": true,
+    "hypothetical_backtest_disclosed_for_all": true,
+    "required_baselines_present": true,
+    "same_bar_count": true,
+    "same_cost_and_slippage_model": true,
+    "same_evaluation_window": true,
+    "same_initial_equity": true,
+    "same_metric_engine": true
+  },
+  "evaluation_windows": {
+    "agentic_candidate_v1": {
+      "bar_count": 756,
+      "end": "2020-11-24",
+      "start": "2018-01-02"
+    },
+    "buy_and_hold_spy": {
+      "bar_count": 756,
+      "end": "2020-11-24",
+      "start": "2018-01-02"
+    },
+    "cash": {
+      "bar_count": 756,
+      "end": "2020-11-24",
+      "start": "2018-01-02"
+    },
+    "equal_weight": {
+      "bar_count": 756,
+      "end": "2020-11-24",
+      "start": "2018-01-02"
+    },
+    "mean_reversion": {
+      "bar_count": 756,
+      "end": "2020-11-24",
+      "start": "2018-01-02"
+    },
+    "simple_momentum": {
+      "bar_count": 756,
+      "end": "2020-11-24",
+      "start": "2018-01-02"
+    },
+    "sma_crossover": {
+      "bar_count": 756,
+      "end": "2020-11-24",
+      "start": "2018-01-02"
+    },
+    "stock_harness_ma_cash": {
+      "bar_count": 756,
+      "end": "2020-11-24",
+      "start": "2018-01-02"
+    },
+    "volatility_targeting": {
+      "bar_count": 756,
+      "end": "2020-11-24",
+      "start": "2018-01-02"
+    }
+  },
+  "fairness_statement": "All included strategies are executed through the same deterministic portfolio accounting, calendar, cost/slippage, metric, and evidence-writing path. Baselines are fixed source-level configs, not post-hoc narrative comparators.",
+  "schema": "downside_performance_baseline_fairness_report_v0_2",
+  "shared_config": {
+    "candidate_strategy_id": "agentic_candidate_v1",
+    "cost_bps": 10.0,
+    "initial_equity": 10000.0,
+    "slippage_bps": 5.0,
+    "trading_days": 252.0
+  },
+  "status": "passed",
+  "strategy_configs": [
+    {
+      "family": "baseline",
+      "is_candidate": false,
+      "label": "Cash",
+      "params": {},
+      "strategy_id": "cash"
+    },
+    {
+      "family": "baseline",
+      "is_candidate": false,
+      "label": "Buy & hold synthetic SPY",
+      "params": {
+        "symbol": "SPY_SYN"
+      },
+      "strategy_id": "buy_and_hold_spy"
+    },
+    {
+      "family": "baseline",
+      "is_candidate": false,
+      "label": "Equal weight universe",
+      "params": {},
+      "strategy_id": "equal_weight"
+    },
+    {
+      "family": "baseline",
+      "is_candidate": false,
+      "label": "SMA 50/200 crossover",
+      "params": {
+        "fast_window": 50,
+        "slow_window": 200,
+        "symbol": "SPY_SYN"
+      },
+      "strategy_id": "sma_crossover"
+    },
+    {
+      "family": "baseline",
+      "is_candidate": false,
+      "label": "Simple top-1 momentum",
+      "params": {
+        "lookback": 63,
+        "rebalance_every": 42
+      },
+      "strategy_id": "simple_momentum"
+    },
+    {
+      "family": "baseline",
+      "is_candidate": false,
+      "label": "Simple short-horizon mean reversion",
+      "params": {
+        "lookback": 5,
+        "trend_window": 80
+      },
+      "strategy_id": "mean_reversion"
+    },
+    {
+      "family": "baseline",
+      "is_candidate": false,
+      "label": "Volatility targeting synthetic SPY",
+      "params": {
+        "symbol": "SPY_SYN",
+        "target_vol": 0.12,
+        "trend_window": 80,
+        "vol_window": 21
+      },
+      "strategy_id": "volatility_targeting"
+    },
+    {
+      "family": "baseline",
+      "is_candidate": false,
+      "label": "Stock Harness MA-to-cash baseline",
+      "params": {
+        "symbol": "SPY_SYN",
+        "window": 3
+      },
+      "strategy_id": "stock_harness_ma_cash"
+    },
+    {
+      "family": "candidate",
+      "is_candidate": true,
+      "label": "Agentic downside-guarded momentum v1",
+      "params": {
+        "drawdown_guard": 0.04,
+        "drawdown_window": 42,
+        "max_position_weight": 1.0,
+        "momentum_window": 63,
+        "risk_off_symbol": "DEFENSIVE_SYN",
+        "risk_off_weight": 0.25,
+        "short_guard_window": 3,
+        "top_n": 1,
+        "trend_window": 80,
+        "vol_guard": 0.02,
+        "vol_window": 21
+      },
+      "strategy_id": "agentic_candidate_v1"
+    }
+  ]
+}

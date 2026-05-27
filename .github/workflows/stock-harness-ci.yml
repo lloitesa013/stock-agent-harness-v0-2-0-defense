@@ -1,0 +1,131 @@
+name: Stock Harness Verification CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+env:
+  STOCK_HARNESS_TMPDIR: ${{ runner.temp }}/stock-harness-tmp
+
+jobs:
+  validate-stock-harness:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: Compile stock harness modules
+      run: |
+        python3 -m py_compile angelos_os/stock_harness.py angelos_os/__init__.py angelos_os/engine.py angelos_os/profiles.py angelos_os/providers.py angelos_os/safety.py angelos_os/schemas.py angelos_os/score_core.py angelos_os/validation.py angelos_os/version.py ops/benchmark_stock_harness.py ops/compare_stock_harness_baselines.py ops/run_stock_harness_release_gate.py ops/run_stock_harness_official_claim_gate.py ops/build_stock_harness_release_bundle.py ops/build_stock_harness_evidence_packet.py ops/verify_stock_harness_evidence_packet.py ops/build_stock_harness_release_candidate.py ops/verify_stock_harness_release_candidate.py ops/replay_stock_harness_release_candidate.py ops/build_stock_harness_official_claim_packet.py ops/verify_stock_harness_official_claim_packet.py ops/audit_stock_harness_release.py tests/test_stock_harness.py
+
+    - name: Run stock harness unit suite
+      run: |
+        python3 -m unittest tests/test_stock_harness.py
+
+    - name: Run deterministic benchmark suite
+      run: |
+        python3 ops/benchmark_stock_harness.py --pretty
+
+    - name: Run scoped claim comparison
+      run: |
+        python3 ops/compare_stock_harness_baselines.py --pretty
+
+    - name: Set up Rust
+      uses: dtolnay/rust-toolchain@stable
+
+    - name: Run Rust unit tests
+      run: |
+        cargo test --manifest-path rust_stock_harness/Cargo.toml
+
+    - name: Run Rust benchmark CLI
+      run: |
+        cargo run --manifest-path rust_stock_harness/Cargo.toml --bin stock-harness-benchmark -- --pretty
+
+    - name: Run official release gate
+      run: |
+        python3 ops/run_stock_harness_release_gate.py --pretty --output reports/stock_harness_release_gate_ci.json
+
+    - name: Build evidence packet
+      run: |
+        python3 ops/build_stock_harness_evidence_packet.py --clean --pretty --release-gate-json reports/stock_harness_release_gate_ci.json
+
+    - name: Verify evidence packet
+      run: |
+        python3 ops/verify_stock_harness_evidence_packet.py --pretty --require-release-gate-json --require-official-claim-ready
+
+    - name: Build release candidate
+      run: |
+        python3 ops/build_stock_harness_release_candidate.py --clean --pretty
+
+    - name: Verify release candidate
+      run: |
+        python3 ops/verify_stock_harness_release_candidate.py --pretty --require-release-gate-json --require-official-claim-ready
+
+    - name: Replay release candidate
+      run: |
+        python3 ops/replay_stock_harness_release_candidate.py --clean --pretty --require-release-gate-json --require-official-claim-ready --output reports/stock_harness_release_candidate_replay_ci.json
+
+    - name: Run official claim publication gate
+      run: |
+        python3 ops/run_stock_harness_official_claim_gate.py --pretty --output reports/stock_harness_official_claim_gate_ci.json
+
+    - name: Build official claim packet
+      run: |
+        python3 ops/build_stock_harness_official_claim_packet.py --clean --pretty --official-claim-gate-json reports/stock_harness_official_claim_gate_ci.json --official-release-gate-json reports/stock_harness_release_gate_official.json --official-replay-json reports/stock_harness_release_candidate_replay_official.json
+
+    - name: Verify official claim packet
+      run: |
+        python3 ops/verify_stock_harness_official_claim_packet.py --pretty
+
+    - name: Upload release gate evidence
+      uses: actions/upload-artifact@v4
+      with:
+        name: stock-harness-release-gate
+        path: reports/stock_harness_release_gate_ci.json
+
+    - name: Upload clean release bundle manifest
+      uses: actions/upload-artifact@v4
+      with:
+        name: stock-harness-release-bundle-manifest
+        path: dist/stock_harness_release/RELEASE_MANIFEST.json
+
+    - name: Upload evidence packet
+      uses: actions/upload-artifact@v4
+      with:
+        name: stock-harness-evidence-packet
+        path: dist/stock_harness_evidence_packet
+
+    - name: Upload release candidate
+      uses: actions/upload-artifact@v4
+      with:
+        name: stock-harness-release-candidate
+        path: dist/stock_harness_release_candidate
+
+    - name: Upload release candidate replay
+      uses: actions/upload-artifact@v4
+      with:
+        name: stock-harness-release-candidate-replay
+        path: reports/stock_harness_release_candidate_replay_ci.json
+
+    - name: Upload official claim publication gate
+      uses: actions/upload-artifact@v4
+      with:
+        name: stock-harness-official-claim-gate
+        path: |
+          reports/stock_harness_official_claim_gate_ci.json
+          reports/stock_harness_release_gate_official.json
+          reports/stock_harness_release_candidate_replay_official.json
+
+    - name: Upload official claim packet
+      uses: actions/upload-artifact@v4
+      with:
+        name: stock-harness-official-claim-packet
+        path: dist/stock_harness_official_claim_packet

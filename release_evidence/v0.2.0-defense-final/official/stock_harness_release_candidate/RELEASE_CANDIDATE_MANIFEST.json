@@ -1,0 +1,43 @@
+{
+  "checks": {
+    "evidence_dir_present": true,
+    "evidence_manifest_passed": true,
+    "release_dir_present": true,
+    "release_manifest_passed": true
+  },
+  "claim_scope": {
+    "benchmark_suite": "downside_verification_v1",
+    "claim_contract_path": "benchmarks/downside_verification_v1/claim_contract.json",
+    "claim_id": "downside_verification_sota_grade_v0_1",
+    "claim_limit": "SOTA-grade deterministic verification coverage only",
+    "non_claims": [
+      "No financial advice.",
+      "No live trading readiness claim.",
+      "No order routing or broker integration claim.",
+      "No investment-performance or alpha-generation claim.",
+      "No universal external-framework dominance claim."
+    ]
+  },
+  "component_count": 2,
+  "components": [
+    {
+      "bytes": 220975,
+      "path": "stock_harness_release.zip",
+      "sha256": "ea5e421ff44505003bc9745f42cf4005c5a79b3a0a37e728f8c3f1da2afc6d1d",
+      "source_dir": "C:\\CARLA demo\\dist\\stock_harness_release",
+      "source_file_count": 71
+    },
+    {
+      "bytes": 36501,
+      "path": "stock_harness_evidence_packet.zip",
+      "sha256": "1d2d299b5065d3a0084278104bb357e53b34b9969c303b8fa016ff67e6d46fbd",
+      "source_dir": "C:\\CARLA demo\\dist\\stock_harness_evidence_packet",
+      "source_file_count": 9
+    }
+  ],
+  "generated_at_unix": 1779828370,
+  "output_dir": "C:\\CARLA demo\\dist\\stock_harness_release_candidate",
+  "schema": "stock_harness_release_candidate_v1",
+  "source_root": "C:\\CARLA demo",
+  "status": "passed"
+}

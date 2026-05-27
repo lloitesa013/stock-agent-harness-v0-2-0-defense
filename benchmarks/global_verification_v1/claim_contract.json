@@ -1,0 +1,55 @@
+{
+  "schema": "stock_harness_global_claim_contract_v1",
+  "claim_id": "global_downside_verification_sota_grade_v0_1",
+  "benchmark_suite": "global_verification_v1",
+  "status_when_supported": "supported_for_named_external_framework_benchmark_suite",
+  "claim_limit": "Global SOTA-grade deterministic verification coverage only, among the named external frameworks and versions directly executed by this benchmark suite.",
+  "positive_claim": "Global SOTA-grade deterministic verification coverage for downside-aware stock backtest research, measured against the named external frameworks directly executed by the included global_verification_v1 benchmark suite.",
+  "non_claims": [
+    "No financial advice.",
+    "No live trading readiness claim.",
+    "No order routing or broker integration claim.",
+    "No investment-performance or alpha-generation claim.",
+    "No speed, latency, or throughput dominance claim.",
+    "No claim outside the named external frameworks and versions executed by this benchmark suite.",
+    "No claim for frameworks that are profile-only or missing from the direct adapter evidence."
+  ],
+  "required_external_frameworks": [
+    "backtesting_py",
+    "backtrader",
+    "vectorbt",
+    "zipline_reloaded",
+    "quantconnect_lean",
+    "nautilus_trader"
+  ],
+  "minimum_named_external_adapters_executed": 6,
+  "required_capabilities": [
+    "local_csv_no_dependency",
+    "lagged_no_lookahead_execution",
+    "mdd_first_verdict",
+    "no_dependency_oracle_parity",
+    "lookahead_mutation_audit",
+    "data_quality_structural_gate",
+    "market_calendar_profile",
+    "adjusted_ohlc_consistency",
+    "external_equity_trade_fill_parity",
+    "order_intent_parity",
+    "walk_forward_downside_validation",
+    "regime_stress_validation",
+    "parameter_overfit_sweep",
+    "cost_slippage_stress",
+    "expanded_execution_stress",
+    "multi_asset_group_metrics",
+    "per_case_artifact_bundle",
+    "reproducible_manifest"
+  ],
+  "required_publication_assertions": [
+    "stock_harness_global_coverage_full",
+    "all_required_external_adapters_executed",
+    "external_adapter_versions_fingerprinted",
+    "stock_harness_ranked_first_by_coverage_score",
+    "stock_harness_score_strictly_exceeds_each_external_framework",
+    "global_non_claims_preserved",
+    "profile_only_frameworks_excluded_from_supported_claim"
+  ]
+}

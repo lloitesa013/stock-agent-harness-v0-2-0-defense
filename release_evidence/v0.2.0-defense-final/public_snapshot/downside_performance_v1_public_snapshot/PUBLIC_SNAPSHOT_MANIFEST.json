@@ -1,0 +1,135 @@
+{
+  "benchmark_json": "downside_performance_v1_latest.json",
+  "claim_gate_json": "downside_performance_claim_gate_latest.json",
+  "file_count": 25,
+  "files": [
+    {
+      "bytes": 1930,
+      "path": "defense/DEFENSE_MANIFEST.json",
+      "sha256": "4d026b13cdabb17274521b850c9ff0e662ebb0d7cd336fa2fa144f255568e931"
+    },
+    {
+      "bytes": 1516,
+      "path": "defense/DEFENSE_SUMMARY.md",
+      "sha256": "b5a5d5a4d7587f46d2c52c3018497e98df99672d51f33e5c360868b0f944578e"
+    },
+    {
+      "bytes": 4663,
+      "path": "defense/baseline_fairness_report.json",
+      "sha256": "7d2f6bac6fb6b6e35e707745960d99bf2e22b58ec2caff731f7b4344339911a3"
+    },
+    {
+      "bytes": 2499,
+      "path": "defense/data_lineage_bias_report.json",
+      "sha256": "4e5cd4243f23bfc09765e4a2c748f6b7af82e825b25d1c5f96b960322d7aa87c"
+    },
+    {
+      "bytes": 1577,
+      "path": "defense/defense_gate.json",
+      "sha256": "248e80946dae4fdbbc10fd762cbefa7847542754ca54376e6c12da76a4643fa7"
+    },
+    {
+      "bytes": 2016,
+      "path": "defense/forward_paper_trading_protocol.json",
+      "sha256": "1c9e024c9b88075da960308164f47413fab649c7c50991d50d327d74350cbf96"
+    },
+    {
+      "bytes": 7145,
+      "path": "defense/statistical_confidence_report.json",
+      "sha256": "9792759166b5eb6b1920b6c9d08bb1065ef2e76d465132e300bd69824261dd9f"
+    },
+    {
+      "bytes": 2252,
+      "path": "defense/strategy_freeze_report.json",
+      "sha256": "3b9bdcb975b60ccb924cded515333de8223a47d159d9e96e69e6d573a63a162c"
+    },
+    {
+      "bytes": 1588,
+      "path": "evidence/PERFORMANCE_MANIFEST.json",
+      "sha256": "5aa7bec94eaa790fcd1af3a2df9725d758ec3228a0f368ef338c1f842d7b4883"
+    },
+    {
+      "bytes": 2095,
+      "path": "evidence/baseline_comparison.json",
+      "sha256": "78cf402c7a5ca7287980d41457d796aa5414d0179ff4c6158b6c85d3cdb9689b"
+    },
+    {
+      "bytes": 1749,
+      "path": "evidence/claim_contract.json",
+      "sha256": "9efee13e89d1a1d4add6ee747e80a75d0a4b518046308607d020022cbc29b6c0"
+    },
+    {
+      "bytes": 551897,
+      "path": "evidence/equity_curves.csv",
+      "sha256": "4f1934093df7ced46031fa1a6018b5e2cc3b215d46a91974fdedf08a73db2316"
+    },
+    {
+      "bytes": 9407,
+      "path": "evidence/metrics.json",
+      "sha256": "1aecf426b652ee12b9e72d856faeff913cb0eea85df745cd958613bddaae9932"
+    },
+    {
+      "bytes": 901,
+      "path": "evidence/performance_gate.json",
+      "sha256": "cb03b072e6a2be7ca83f133c43dc8988dc7e6b03b6b07a1afb6555c1ac14b1fc"
+    },
+    {
+      "bytes": 5605,
+      "path": "evidence/robustness_report.json",
+      "sha256": "8957d2c5ee462282564dc0939c9d6530e7253aa6265e162ea0f0cf707c891e0d"
+    },
+    {
+      "bytes": 13504,
+      "path": "evidence/trades.csv",
+      "sha256": "3262bcc5520178fba8590a65cd66a4212a690a2801a440cd1be939fb057839c1"
+    },
+    {
+      "bytes": 3936,
+      "path": "paper/DOWNSIDE_PERFORMANCE_CLAIM_PAPER.md",
+      "sha256": "b8b1383cf9a3d5e8d1e563d15759e6da2cb2372d9ea1a1ac77d0d7a39285ae4e"
+    },
+    {
+      "bytes": 246374,
+      "path": "paper/DOWNSIDE_PERFORMANCE_CLAIM_PAPER.pdf",
+      "sha256": "59c9700c4e28c246846310eb4b3bd06353685ddb5cb9ec3b085332253e872afc"
+    },
+    {
+      "bytes": 3230189,
+      "path": "reports/downside_performance_claim_gate_latest.json",
+      "sha256": "5bdfb701d793ab93eb87a7b974afd6940d391b64e2966f7e78220ceb3b3a7954"
+    },
+    {
+      "bytes": 3006496,
+      "path": "reports/downside_performance_v1_latest.json",
+      "sha256": "f5cf93223544ddc452b839a6940e49e84b43b5fdc42a56d98a031a7487a0820e"
+    },
+    {
+      "bytes": 43815,
+      "path": "visuals/baseline_total_return.png",
+      "sha256": "cf854867350e515d1e3aa63038929d46bf1378bd1a88aad378e28d6894a8c9e1"
+    },
+    {
+      "bytes": 30566,
+      "path": "visuals/cost_slippage_stress.png",
+      "sha256": "0118b464bc55d0df3d12442da4b725ff0677f587ce27c1a5d796dd3b35579560"
+    },
+    {
+      "bytes": 34097,
+      "path": "visuals/drawdown_curve_comparison.png",
+      "sha256": "584957b50ae8c6a968b4162a2c14aada652ab30691212d878046481c76f1ced3"
+    },
+    {
+      "bytes": 33836,
+      "path": "visuals/equity_curve_comparison.png",
+      "sha256": "dd09d7c21df1cf678f363d15bc6c69f607675858c59bbd1a111f0375163cc93d"
+    },
+    {
+      "bytes": 43282,
+      "path": "visuals/risk_adjusted_ranking.png",
+      "sha256": "e5a21a840d43ddb1559fbb4f06bafe9bf9977b654aeae6a46b552d0b1517bec9"
+    }
+  ],
+  "generated_at_utc": "2026-05-26T20:21:46Z",
+  "schema": "downside_performance_public_snapshot_v1",
+  "status": "passed"
+}

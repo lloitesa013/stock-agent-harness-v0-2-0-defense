@@ -1,0 +1,33 @@
+{
+  "checks": {
+    "baseline_fairness_verified": true,
+    "bootstrap_confidence_intervals_present": true,
+    "data_bias_defense_passed": true,
+    "no_live_or_future_return_claim_preserved": true,
+    "non_claims_preserved": true,
+    "paper_trading_protocol_initialized": true,
+    "performance_claim_boundary_preserved": true,
+    "statistical_confidence_report_present": true,
+    "strategy_freeze_verified": true
+  },
+  "claim_scope": {
+    "benchmark_suite": "downside_performance_v1",
+    "claim_id": "downside_adjusted_backtested_performance_v0_1",
+    "claim_limit": "SOTA-grade downside-adjusted hypothetical backtested performance under the included downside_performance_v1 benchmark only",
+    "defense_version": "v0.2.0-defense",
+    "non_claims": [
+      "No financial advice.",
+      "No live trading readiness claim.",
+      "No return guarantee or future performance claim.",
+      "No realized investor return claim.",
+      "No broker integration, order routing, or execution-readiness claim.",
+      "No universal market, strategy, or external-framework dominance claim.",
+      "No claim outside the included downside_performance_v1 benchmark suite."
+    ],
+    "performance_type": "hypothetical_backtested_performance"
+  },
+  "defense_claim_defensible": true,
+  "publication_requirement": "performance_claim_publishable plus strategy freeze, data lineage, baseline fairness, statistical confidence, and forward paper-trading protocol evidence",
+  "schema": "downside_performance_defense_gate_v0_2",
+  "status": "passed"
+}

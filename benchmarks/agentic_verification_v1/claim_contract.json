@@ -1,0 +1,53 @@
+{
+  "schema": "stock_agent_harness_claim_contract_v1",
+  "claim_id": "agentic_downside_verification_workflow_v0_1",
+  "benchmark_suite": "agentic_verification_v1",
+  "status_when_supported": "supported_for_included_benchmark_suite",
+  "claim_limit": "SOTA-inspired deterministic multi-agent verification workflow coverage only",
+  "positive_claim": "Stock Agent Harness provides SOTA-inspired deterministic multi-agent verification workflow coverage for downside-aware stock backtest research, integrated with Stock Harness verification gates.",
+  "non_claims": [
+    "No financial advice.",
+    "No live trading readiness claim.",
+    "No alpha-generation, investment-performance, or profitability claim.",
+    "No broker integration, order routing, or execution-readiness claim.",
+    "No universal LLM trading dominance claim.",
+    "No claim outside the included agentic_verification_v1 deterministic workflow."
+  ],
+  "required_roles": [
+    "DataSentinel",
+    "ResearchAnalyst",
+    "StrategySynthesizer",
+    "RiskSkeptic",
+    "ExecutionAuditor",
+    "VerificationChair"
+  ],
+  "required_stock_harness_artifacts": [
+    "data_quality",
+    "backtest",
+    "lookahead_audit",
+    "walk_forward",
+    "regime_stress",
+    "parameter_sweep",
+    "cost_stress",
+    "stress_matrix"
+  ],
+  "required_agentic_gate_assertions": [
+    "agent_report_schema_valid",
+    "agent_provider_deterministic",
+    "all_required_roles_executed",
+    "stock_harness_verification_artifacts_present",
+    "data_quality_gate_preserved",
+    "lookahead_audit_preserved",
+    "stress_verification_preserved",
+    "final_verdict_supported",
+    "non_claims_preserved",
+    "deterministic_replay_fingerprint_stable",
+    "llm_provider_excluded_from_official_gate",
+    "claim_contract_scope_preserved"
+  ],
+  "provider_policy": {
+    "official_provider": "deterministic",
+    "llm_provider_allowed": "optional_only",
+    "network_required": false
+  }
+}

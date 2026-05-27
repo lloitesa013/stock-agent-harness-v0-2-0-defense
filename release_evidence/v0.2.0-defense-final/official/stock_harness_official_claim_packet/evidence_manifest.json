@@ -1,0 +1,85 @@
+{
+  "checks": {
+    "benchmark_all_passed": true,
+    "claim_contract_copied": true,
+    "claim_contract_diffs_absent": true,
+    "claim_status_supported": true,
+    "coverage_score_full": true,
+    "expected_summary_copied": true,
+    "expected_summary_diffs_absent": true,
+    "release_audit_passed": true,
+    "release_bundle_passed": true,
+    "release_manifest_copied": true,
+    "universal_external_dominance_excluded": true
+  },
+  "claim_scope": {
+    "benchmark_suite": "downside_verification_v1",
+    "claim_contract_path": "benchmarks/downside_verification_v1/claim_contract.json",
+    "claim_id": "downside_verification_sota_grade_v0_1",
+    "claim_limit": "SOTA-grade deterministic verification coverage only",
+    "non_claims": [
+      "No financial advice.",
+      "No live trading readiness claim.",
+      "No order routing or broker integration claim.",
+      "No investment-performance or alpha-generation claim.",
+      "No universal external-framework dominance claim."
+    ]
+  },
+  "file_count": 8,
+  "files": [
+    {
+      "bytes": 18594,
+      "path": "benchmark_stock_harness.json",
+      "sha256": "5f1ac00d27f9c200b52dff308e10e306044d4b6e6bb59f7031fa33848da48539"
+    },
+    {
+      "bytes": 8398,
+      "path": "claim_comparison.json",
+      "sha256": "5326a36a37a3fdc4810d5fefd5464887218fa02b2bb4484605a53e8cd8d9c305"
+    },
+    {
+      "bytes": 2695,
+      "path": "claim_contract.json",
+      "sha256": "582dc2282b5a3c846c068d53938c3a0a1923e02553f2ccf5f99678e43673bfc6"
+    },
+    {
+      "bytes": 472,
+      "path": "expected_summary.json",
+      "sha256": "f88594f966bbd6960038c100f24b057b6bbb86baeb2e30dc3e3d412e6de3b4ba"
+    },
+    {
+      "bytes": 4246,
+      "path": "release_audit.json",
+      "sha256": "40e3594ec17bfbb73789aca1c50887da7cc921442fb2b5b9abfe26f2b57d693e"
+    },
+    {
+      "bytes": 13087,
+      "path": "release_bundle.json",
+      "sha256": "27f92496e5c7995145c653e3df657205a7a75e378f7127ceb946976a9b4f1a73"
+    },
+    {
+      "bytes": 13087,
+      "path": "release_bundle_manifest.json",
+      "sha256": "27f92496e5c7995145c653e3df657205a7a75e378f7127ceb946976a9b4f1a73"
+    },
+    {
+      "bytes": 116787,
+      "path": "release_gate.json",
+      "sha256": "652f6dc8497aa080ac6d0e7a8aff191c021e986b8e96cf8722e1b2d49903dc36"
+    }
+  ],
+  "generated_at_unix": 1779828370,
+  "output_dir": "C:\\CARLA demo\\dist\\stock_harness_evidence_packet",
+  "release_gate_json": {
+    "checks": {
+      "claim_status": true,
+      "python_gate_passed": true,
+      "schema": true
+    },
+    "passed": true,
+    "provided": true
+  },
+  "schema": "stock_harness_evidence_packet_v1",
+  "source_root": "C:\\CARLA demo",
+  "status": "passed"
+}

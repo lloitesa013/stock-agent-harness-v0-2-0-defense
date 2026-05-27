@@ -1,0 +1,156 @@
+{
+  "assertions": [
+    {
+      "id": "full_release_gate_official_ready",
+      "passed": true
+    },
+    {
+      "id": "evidence_packet_verified_for_publication",
+      "passed": true
+    },
+    {
+      "id": "release_candidate_built_for_publication",
+      "passed": true
+    },
+    {
+      "id": "release_candidate_verified_for_publication",
+      "passed": true
+    },
+    {
+      "id": "release_candidate_replayed_for_publication",
+      "passed": true
+    },
+    {
+      "id": "scoped_non_claims_preserved",
+      "passed": true
+    },
+    {
+      "id": "official_commands_completed",
+      "passed": true
+    }
+  ],
+  "claim_scope": {
+    "benchmark_suite": "downside_verification_v1",
+    "positive_claim_limit": "verification coverage only",
+    "publication_requirement": "Python plus Cargo full gate with official release candidate replay"
+  },
+  "commands": [
+    {
+      "command": [
+        "C:\\CARLA demo\\.venv37\\Scripts\\python.exe",
+        "ops/run_stock_harness_release_gate.py",
+        "--pretty",
+        "--output",
+        "reports/stock_harness_release_gate_official.json"
+      ],
+      "elapsed_seconds": 31.885128,
+      "name": "full_release_gate",
+      "passed": true,
+      "returncode": 0,
+      "stderr_bytes": 0,
+      "stderr_tail": "",
+      "stdout_bytes": 116432,
+      "stdout_tail": "ess-c5b051ca4957a04b.exe)\\n     Running unittests src\\\\main.rs (rust_stock_harness\\\\target\\\\debug\\\\deps\\\\stock_harness_benchmark-e88cb7d2dec0491a.exe)\\n   Doc-tests rust_stock_harness\\n\",\n      \"stdout\": \"\\nrunning 7 tests\\ntest tests::backtest_keeps_crash_case_when_cash_exit_protects_downside ... ok\\ntest tests::data_quality_accepts_adjusted_ohlc_with_stable_ratio ... ok\\ntest tests::backtest_rejects_steady_up_because_benchmark_has_zero_drawdown ... ok\\ntest tests::benchmark_suite_passes_expected_regime_verdicts ... ok\\ntest tests::data_quality_rejects_invalid_high_low ... ok\\ntest tests::benchmark_json_includes_claim_relevant_fields ... ok\\ntest tests::csv_loader_reads_ohlcv_rows ... ok\\n\\ntest result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\\n\\n\\nrunning 0 tests\\n\\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\\n\\n\\nrunning 0 tests\\n\\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\\n\\n\"\n    },\n    {\n      \"command\": [\n        \"C:\\\\Users\\\\DA\\\\.cargo\\\\bin\\\\cargo.exe\",\n        \"run\",\n        \"--manifest-path\",\n        \"rust_stock_harness/Cargo.toml\",\n        \"--bin\",\n        \"stock-harness-benchmark\",\n        \"--\",\n        \"--pretty\"\n      ],\n      \"elapsed_seconds\": 0.063234,\n      \"name\": \"rust_benchmark\",\n      \"passed\": true,\n      \"returncode\": 0,\n      \"stderr\": \"    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.01s\\n     Running `rust_stock_harness\\\\target\\\\debug\\\\stock-harness-benchmark.exe --pretty`\\n\",\n      \"stdout\": \"{\\n  \\\"benchmark\\\": \\\"rust_stock_harness_v0\\\",\\n  \\\"all_passed\\\": true,\\n  \\\"data_quality\\\": {\\\"verdict\\\":\\\"KEEP\\\",\\\"error_count\\\":0,\\\"warning_count\\\":0,\\\"bar_count\\\":11,\\\"duplicate_dates\\\":0,\\\"missing_business_days\\\":0,\\\"zero_volume_count\\\":0,\\\"max_open_gap_ratio\\\":0.230769230769,\\\"max_close_jump_ratio\\\":0.230769230769,\\\"adjusted_ohlc_count\\\":0,\\\"partial_adjusted_ohlc_count\\\":0},\\n  \\\"cases\\\": [\\n    {\\\"name\\\":\\\"steady_up\\\",\\\"expected_verdict\\\":\\\"REJECT\\\",\\\"actual_verdict\\\":\\\"REJECT\\\",\\\"passed\\\":true,\\\"total_return\\\":0.028826193592,\\\"benchmark_total_return\\\":0.060000000000,\\\"max_drawdown\\\":0.000300020000,\\\"benchmark_max_drawdown\\\":0.000000000000,\\\"trade_count\\\":1,\\\"reasons\\\":[\\\"downside_protection_failed: 0.000300 >= benchmark 0.000000\\\"]},\\n    {\\\"name\\\":\\\"crash\\\",\\\"expected_verdict\\\":\\\"KEEP\\\",\\\"actual_verdict\\\":\\\"KEEP\\\",\\\"passed\\\":true,\\\"total_return\\\":0.016786087304,\\\"benchmark_total_return\\\":-0.250000000000,\\\"max_drawdown\\\":0.025299754664,\\\"benchmark_max_drawdown\\\":0.375000000000,\\\"trade_count\\\":2,\\\"reasons\\\":[\\\"drawdown_within_limit\\\",\\\"max_drawdown_better_than_benchmark\\\"]},\\n    {\\\"name\\\":\\\"whipsaw\\\",\\\"expected_verdict\\\":\\\"KEEP\\\",\\\"actual_verdict\\\":\\\"KEEP\\\",\\\"passed\\\":true,\\\"total_return\\\":0.169488096206,\\\"benchmark_total_return\\\":0.060000000000,\\\"max_drawdown\\\":0.000300020000,\\\"benchmark_max_drawdown\\\":0.076190476190,\\\"trade_count\\\":4,\\\"reasons\\\":[\\\"drawdown_within_limit\\\",\\\"max_drawdown_better_than_benchmark\\\"]},\\n    {\\\"name\\\":\\\"flat_then_spike\\\",\\\"expected_verdict\\\":\\\"REJECT\\\",\\\"actual_verdict\\\":\\\"REJECT\\\",\\\"passed\\\":true,\\\"total_return\\\":-0.000300020000,\\\"benchmark_total_return\\\":1.000000000000,\\\"max_drawdown\\\":0.000300020000,\\\"benchmark_max_drawdown\\\":0.000000000000,\\\"trade_count\\\":1,\\\"reasons\\\":[\\\"downside_protection_failed: 0.000300 >= benchmark 0.000000\\\"]}\\n  ]\\n}\\n\"\n    }\n  ],\n  \"environment\": {\n    \"cargo_path\": \"C:\\\\Users\\\\DA\\\\.cargo\\\\bin\\\\cargo.exe\",\n    \"platform\": \"Windows-10-10.0.26100-SP0\",\n    \"python_executable\": \"C:\\\\CARLA demo\\\\.venv37\\\\Scripts\\\\python.exe\",\n    \"python_version\": \"3.7.9 (tags/v3.7.9:13c94747c7, Aug 17 2020, 18:58:18) [MSC v.1900 64 bit (AMD64)]\",\n    \"stock_harness_tmpdir\": \"\"\n  },\n  \"generated_at_unix\": 1779828369,\n  \"official_claim_ready\": true,\n  \"overall_status\": \"passed\",\n  \"python_gate_passed\": true,\n  \"root\": \"C:\\\\CARLA demo\",\n  \"rust_status\": \"required\",\n  \"schema\": \"stock_harness_release_gate_v1\"\n}\n"
+    },
+    {
+      "command": [
+        "C:\\CARLA demo\\.venv37\\Scripts\\python.exe",
+        "ops/build_stock_harness_evidence_packet.py",
+        "--clean",
+        "--pretty",
+        "--release-gate-json",
+        "reports/stock_harness_release_gate_official.json"
+      ],
+      "elapsed_seconds": 0.989779,
+      "name": "evidence_packet",
+      "passed": true,
+      "returncode": 0,
+      "stderr_bytes": 0,
+      "stderr_tail": "",
+      "stdout_bytes": 2680,
+      "stdout_tail": "{\n  \"checks\": {\n    \"benchmark_all_passed\": true,\n    \"claim_contract_copied\": true,\n    \"claim_contract_diffs_absent\": true,\n    \"claim_status_supported\": true,\n    \"coverage_score_full\": true,\n    \"expected_summary_copied\": true,\n    \"expected_summary_diffs_absent\": true,\n    \"release_audit_passed\": true,\n    \"release_bundle_passed\": true,\n    \"release_manifest_copied\": true,\n    \"universal_external_dominance_excluded\": true\n  },\n  \"claim_scope\": {\n    \"benchmark_suite\": \"downside_verification_v1\",\n    \"claim_contract_path\": \"benchmarks/downside_verification_v1/claim_contract.json\",\n    \"claim_id\": \"downside_verification_sota_grade_v0_1\",\n    \"claim_limit\": \"SOTA-grade deterministic verification coverage only\",\n    \"non_claims\": [\n      \"No financial advice.\",\n      \"No live trading readiness claim.\",\n      \"No order routing or broker integration claim.\",\n      \"No investment-performance or alpha-generation claim.\",\n      \"No universal external-framework dominance claim.\"\n    ]\n  },\n  \"file_count\": 8,\n  \"files\": [\n    {\n      \"bytes\": 18594,\n      \"path\": \"benchmark_stock_harness.json\",\n      \"sha256\": \"5f1ac00d27f9c200b52dff308e10e306044d4b6e6bb59f7031fa33848da48539\"\n    },\n    {\n      \"bytes\": 8398,\n      \"path\": \"claim_comparison.json\",\n      \"sha256\": \"5326a36a37a3fdc4810d5fefd5464887218fa02b2bb4484605a53e8cd8d9c305\"\n    },\n    {\n      \"bytes\": 2695,\n      \"path\": \"claim_contract.json\",\n      \"sha256\": \"582dc2282b5a3c846c068d53938c3a0a1923e02553f2ccf5f99678e43673bfc6\"\n    },\n    {\n      \"bytes\": 472,\n      \"path\": \"expected_summary.json\",\n      \"sha256\": \"f88594f966bbd6960038c100f24b057b6bbb86baeb2e30dc3e3d412e6de3b4ba\"\n    },\n    {\n      \"bytes\": 4246,\n      \"path\": \"release_audit.json\",\n      \"sha256\": \"40e3594ec17bfbb73789aca1c50887da7cc921442fb2b5b9abfe26f2b57d693e\"\n    },\n    {\n      \"bytes\": 13087,\n      \"path\": \"release_bundle.json\",\n      \"sha256\": \"27f92496e5c7995145c653e3df657205a7a75e378f7127ceb946976a9b4f1a73\"\n    },\n    {\n      \"bytes\": 13087,\n      \"path\": \"release_bundle_manifest.json\",\n      \"sha256\": \"27f92496e5c7995145c653e3df657205a7a75e378f7127ceb946976a9b4f1a73\"\n    },\n    {\n      \"bytes\": 116787,\n      \"path\": \"release_gate.json\",\n      \"sha256\": \"652f6dc8497aa080ac6d0e7a8aff191c021e986b8e96cf8722e1b2d49903dc36\"\n    }\n  ],\n  \"generated_at_unix\": 1779828370,\n  \"output_dir\": \"C:\\\\CARLA demo\\\\dist\\\\stock_harness_evidence_packet\",\n  \"release_gate_json\": {\n    \"checks\": {\n      \"claim_status\": true,\n      \"python_gate_passed\": true,\n      \"schema\": true\n    },\n    \"passed\": true,\n    \"provided\": true\n  },\n  \"schema\": \"stock_harness_evidence_packet_v1\",\n  \"source_root\": \"C:\\\\CARLA demo\",\n  \"status\": \"passed\"\n}\n"
+    },
+    {
+      "command": [
+        "C:\\CARLA demo\\.venv37\\Scripts\\python.exe",
+        "ops/verify_stock_harness_evidence_packet.py",
+        "--pretty",
+        "--require-release-gate-json",
+        "--require-official-claim-ready"
+      ],
+      "elapsed_seconds": 0.117699,
+      "name": "evidence_packet_verification",
+      "passed": true,
+      "returncode": 0,
+      "stderr_bytes": 0,
+      "stderr_tail": "",
+      "stdout_bytes": 1440,
+      "stdout_tail": "{\n  \"checks\": {\n    \"hashes\": {\n      \"errors\": [],\n      \"passed\": true\n    },\n    \"json_payloads\": {\n      \"checks\": {\n        \"benchmark_all_passed\": true,\n        \"claim_contract_scope\": true,\n        \"comparison_claim_supported\": true,\n        \"comparison_contract_diffs_absent\": true,\n        \"comparison_coverage_full\": true,\n        \"comparison_expected_diffs_absent\": true,\n        \"expected_summary_scope\": true,\n        \"release_audit_passed\": true,\n        \"release_bundle_manifest_passed\": true,\n        \"release_bundle_passed\": true,\n        \"release_gate_claim_supported\": true,\n        \"release_gate_official_ready\": true,\n        \"release_gate_presence\": true,\n        \"release_gate_python_passed\": true,\n        \"release_gate_schema\": true\n      },\n      \"errors\": [],\n      \"passed\": true\n    },\n    \"manifest\": {\n      \"manifest_path\": \"C:\\\\CARLA demo\\\\dist\\\\stock_harness_evidence_packet\\\\EVIDENCE_MANIFEST.json\",\n      \"passed\": true\n    },\n    \"required_files\": {\n      \"checks\": {\n        \"file_count_matches_manifest\": true,\n        \"required_files_present\": true,\n        \"unsafe_paths_absent\": true\n      },\n      \"missing\": [],\n      \"passed\": true,\n      \"unsafe\": []\n    }\n  },\n  \"packet_dir\": \"C:\\\\CARLA demo\\\\dist\\\\stock_harness_evidence_packet\",\n  \"require_official_claim_ready\": true,\n  \"require_release_gate_json\": true,\n  \"schema\": \"stock_harness_evidence_packet_verification_v1\",\n  \"status\": \"passed\"\n}\n"
+    },
+    {
+      "command": [
+        "C:\\CARLA demo\\.venv37\\Scripts\\python.exe",
+        "ops/build_stock_harness_release_candidate.py",
+        "--clean",
+        "--pretty"
+      ],
+      "elapsed_seconds": 0.204394,
+      "name": "release_candidate",
+      "passed": true,
+      "returncode": 0,
+      "stderr_bytes": 0,
+      "stderr_tail": "",
+      "stdout_bytes": 1522,
+      "stdout_tail": "{\n  \"checks\": {\n    \"evidence_dir_present\": true,\n    \"evidence_manifest_passed\": true,\n    \"release_dir_present\": true,\n    \"release_manifest_passed\": true\n  },\n  \"claim_scope\": {\n    \"benchmark_suite\": \"downside_verification_v1\",\n    \"claim_contract_path\": \"benchmarks/downside_verification_v1/claim_contract.json\",\n    \"claim_id\": \"downside_verification_sota_grade_v0_1\",\n    \"claim_limit\": \"SOTA-grade deterministic verification coverage only\",\n    \"non_claims\": [\n      \"No financial advice.\",\n      \"No live trading readiness claim.\",\n      \"No order routing or broker integration claim.\",\n      \"No investment-performance or alpha-generation claim.\",\n      \"No universal external-framework dominance claim.\"\n    ]\n  },\n  \"component_count\": 2,\n  \"components\": [\n    {\n      \"bytes\": 220975,\n      \"path\": \"stock_harness_release.zip\",\n      \"sha256\": \"ea5e421ff44505003bc9745f42cf4005c5a79b3a0a37e728f8c3f1da2afc6d1d\",\n      \"source_dir\": \"C:\\\\CARLA demo\\\\dist\\\\stock_harness_release\",\n      \"source_file_count\": 71\n    },\n    {\n      \"bytes\": 36501,\n      \"path\": \"stock_harness_evidence_packet.zip\",\n      \"sha256\": \"1d2d299b5065d3a0084278104bb357e53b34b9969c303b8fa016ff67e6d46fbd\",\n      \"source_dir\": \"C:\\\\CARLA demo\\\\dist\\\\stock_harness_evidence_packet\",\n      \"source_file_count\": 9\n    }\n  ],\n  \"generated_at_unix\": 1779828370,\n  \"output_dir\": \"C:\\\\CARLA demo\\\\dist\\\\stock_harness_release_candidate\",\n  \"schema\": \"stock_harness_release_candidate_v1\",\n  \"source_root\": \"C:\\\\CARLA demo\",\n  \"status\": \"passed\"\n}\n"
+    },
+    {
+      "command": [
+        "C:\\CARLA demo\\.venv37\\Scripts\\python.exe",
+        "ops/verify_stock_harness_release_candidate.py",
+        "--pretty",
+        "--require-release-gate-json",
+        "--require-official-claim-ready"
+      ],
+      "elapsed_seconds": 0.132511,
+      "name": "release_candidate_verification",
+      "passed": true,
+      "returncode": 0,
+      "stderr_bytes": 0,
+      "stderr_tail": "",
+      "stdout_bytes": 1019,
+      "stdout_tail": "{\n  \"candidate_dir\": \"C:\\\\CARLA demo\\\\dist\\\\stock_harness_release_candidate\",\n  \"checks\": {\n    \"components\": {\n      \"checks\": {\n        \"component_count_matches_manifest\": true,\n        \"component_hashes_match\": true,\n        \"required_components_present\": true\n      },\n      \"errors\": [],\n      \"missing\": [],\n      \"passed\": true\n    },\n    \"manifest\": {\n      \"manifest_path\": \"C:\\\\CARLA demo\\\\dist\\\\stock_harness_release_candidate\\\\RELEASE_CANDIDATE_MANIFEST.json\",\n      \"passed\": true\n    },\n    \"zip_payloads\": {\n      \"checks\": {\n        \"evidence_manifest_passed\": true,\n        \"release_gate_claim_supported\": true,\n        \"release_gate_official_ready\": true,\n        \"release_gate_python_passed\": true,\n        \"release_gate_schema\": true,\n        \"release_manifest_passed\": true\n      },\n      \"errors\": [],\n      \"passed\": true\n    }\n  },\n  \"require_official_claim_ready\": true,\n  \"require_release_gate_json\": true,\n  \"schema\": \"stock_harness_release_candidate_verification_v1\",\n  \"status\": \"passed\"\n}\n"
+    },
+    {
+      "command": [
+        "C:\\CARLA demo\\.venv37\\Scripts\\python.exe",
+        "ops/replay_stock_harness_release_candidate.py",
+        "--clean",
+        "--pretty",
+        "--require-release-gate-json",
+        "--require-official-claim-ready",
+        "--output",
+        "reports/stock_harness_release_candidate_replay_official.json"
+      ],
+      "elapsed_seconds": 11.445293,
+      "name": "release_candidate_replay",
+      "passed": true,
+      "returncode": 0,
+      "stderr_bytes": 0,
+      "stderr_tail": "",
+      "stdout_bytes": 43873,
+      "stdout_tail": "ebug\\\\deps\\\\rust_stock_harness-c5b051ca4957a04b.exe)\\n     Running unittests src\\\\main.rs (rust_stock_harness\\\\target\\\\debug\\\\deps\\\\stock_harness_benchmark-e88cb7d2dec0491a.exe)\\n   Doc-tests rust_stock_harness\\n\",\n      \"stdout\": \"\\nrunning 7 tests\\ntest tests::backtest_keeps_crash_case_when_cash_exit_protects_downside ... ok\\ntest tests::backtest_rejects_steady_up_because_benchmark_has_zero_drawdown ... ok\\ntest tests::data_quality_accepts_adjusted_ohlc_with_stable_ratio ... ok\\ntest tests::benchmark_suite_passes_expected_regime_verdicts ... ok\\ntest tests::data_quality_rejects_invalid_high_low ... ok\\ntest tests::benchmark_json_includes_claim_relevant_fields ... ok\\ntest tests::csv_loader_reads_ohlcv_rows ... ok\\n\\ntest result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\\n\\n\\nrunning 0 tests\\n\\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\\n\\n\\nrunning 0 tests\\n\\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\\n\\n\"\n    },\n    {\n      \"command\": [\n        \"C:\\\\Users\\\\DA\\\\.cargo\\\\bin\\\\cargo.exe\",\n        \"run\",\n        \"--manifest-path\",\n        \"rust_stock_harness/Cargo.toml\",\n        \"--bin\",\n        \"stock-harness-benchmark\",\n        \"--\",\n        \"--pretty\"\n      ],\n      \"elapsed_seconds\": 0.372652,\n      \"name\": \"rust_benchmark\",\n      \"passed\": true,\n      \"returncode\": 0,\n      \"stderr\": \"   Compiling rust_stock_harness v0.1.0 (C:\\\\CARLA demo\\\\dist\\\\stock_harness_release_candidate_replay\\\\stock_harness_release\\\\rust_stock_harness)\\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.26s\\n     Running `rust_stock_harness\\\\target\\\\debug\\\\stock-harness-benchmark.exe --pretty`\\n\",\n      \"stdout\": \"{\\n  \\\"benchmark\\\": \\\"rust_stock_harness_v0\\\",\\n  \\\"all_passed\\\": true,\\n  \\\"data_quality\\\": {\\\"verdict\\\":\\\"KEEP\\\",\\\"error_count\\\":0,\\\"warning_count\\\":0,\\\"bar_count\\\":11,\\\"duplicate_dates\\\":0,\\\"missing_business_days\\\":0,\\\"zero_volume_count\\\":0,\\\"max_open_gap_ratio\\\":0.230769230769,\\\"max_close_jump_ratio\\\":0.230769230769,\\\"adjusted_ohlc_count\\\":0,\\\"partial_adjusted_ohlc_count\\\":0},\\n  \\\"cases\\\": [\\n    {\\\"name\\\":\\\"steady_up\\\",\\\"expected_verdict\\\":\\\"REJECT\\\",\\\"actual_verdict\\\":\\\"REJECT\\\",\\\"passed\\\":true,\\\"total_return\\\":0.028826193592,\\\"benchmark_total_return\\\":0.060000000000,\\\"max_drawdown\\\":0.000300020000,\\\"benchmark_max_drawdown\\\":0.000000000000,\\\"trade_count\\\":1,\\\"reasons\\\":[\\\"downside_protection_failed: 0.000300 >= benchmark 0.000000\\\"]},\\n    {\\\"name\\\":\\\"crash\\\",\\\"expected_verdict\\\":\\\"KEEP\\\",\\\"actual_verdict\\\":\\\"KEEP\\\",\\\"passed\\\":true,\\\"total_return\\\":0.016786087304,\\\"benchmark_total_return\\\":-0.250000000000,\\\"max_drawdown\\\":0.025299754664,\\\"benchmark_max_drawdown\\\":0.375000000000,\\\"trade_count\\\":2,\\\"reasons\\\":[\\\"drawdown_within_limit\\\",\\\"max_drawdown_better_than_benchmark\\\"]},\\n    {\\\"name\\\":\\\"whipsaw\\\",\\\"expected_verdict\\\":\\\"KEEP\\\",\\\"actual_verdict\\\":\\\"KEEP\\\",\\\"passed\\\":true,\\\"total_return\\\":0.169488096206,\\\"benchmark_total_return\\\":0.060000000000,\\\"max_drawdown\\\":0.000300020000,\\\"benchmark_max_drawdown\\\":0.076190476190,\\\"trade_count\\\":4,\\\"reasons\\\":[\\\"drawdown_within_limit\\\",\\\"max_drawdown_better_than_benchmark\\\"]},\\n    {\\\"name\\\":\\\"flat_then_spike\\\",\\\"expected_verdict\\\":\\\"REJECT\\\",\\\"actual_verdict\\\":\\\"REJECT\\\",\\\"passed\\\":true,\\\"total_return\\\":-0.000300020000,\\\"benchmark_total_return\\\":1.000000000000,\\\"max_drawdown\\\":0.000300020000,\\\"benchmark_max_drawdown\\\":0.000000000000,\\\"trade_count\\\":1,\\\"reasons\\\":[\\\"downside_protection_failed: 0.000300 >= benchmark 0.000000\\\"]}\\n  ]\\n}\\n\"\n    }\n  ],\n  \"extracted_file_count\": 71,\n  \"extracted_root\": \"C:\\\\CARLA demo\\\\dist\\\\stock_harness_release_candidate_replay\\\\stock_harness_release\",\n  \"output_dir\": \"C:\\\\CARLA demo\\\\dist\\\\stock_harness_release_candidate_replay\",\n  \"require_official_claim_ready\": true,\n  \"require_release_gate_json\": true,\n  \"schema\": \"stock_harness_release_candidate_replay_v1\",\n  \"skip_rust\": false,\n  \"status\": \"passed\"\n}\n"
+    }
+  ],
+  "environment": {
+    "platform": "Windows-10-10.0.26100-SP0",
+    "python_executable": "C:\\CARLA demo\\.venv37\\Scripts\\python.exe",
+    "python_version": "3.7.9 (tags/v3.7.9:13c94747c7, Aug 17 2020, 18:58:18) [MSC v.1900 64 bit (AMD64)]"
+  },
+  "generated_at_unix": 1779828382,
+  "official_claim_publishable": true,
+  "release_candidate_replay_json": "C:\\CARLA demo\\reports\\stock_harness_release_candidate_replay_official.json",
+  "release_gate_json": "C:\\CARLA demo\\reports\\stock_harness_release_gate_official.json",
+  "root": "C:\\CARLA demo",
+  "schema": "stock_harness_official_claim_gate_v1",
+  "status": "passed"
+}

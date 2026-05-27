@@ -1,0 +1,33 @@
+{
+  "candidate_strategy_id": "agentic_candidate_v1",
+  "checkpoints": [
+    "2026-06-26",
+    "2026-08-25",
+    "2026-11-23"
+  ],
+  "forward_paper_trading_started": true,
+  "forward_start_date": "2026-05-27",
+  "frequency": "daily after market close or next available benchmark session",
+  "frozen_strategy_config_hash": "3db6469342df045f2a22949fc52ede51572145df8c0056c5b147fe16be74970d",
+  "mode": "paper_signal_logging_only",
+  "next_release_target": "v0.3.0-forward",
+  "no_live_claims_preserved": true,
+  "non_claims": [
+    "No financial advice.",
+    "No live trading readiness claim.",
+    "No return guarantee or future performance claim.",
+    "No realized investor return claim.",
+    "No broker integration, order routing, or execution-readiness claim.",
+    "No universal market, strategy, or external-framework dominance claim.",
+    "No claim outside the included downside_performance_v1 benchmark suite."
+  ],
+  "recordkeeping": [
+    "Do not alter candidate parameters during the forward window.",
+    "Store every generated signal before subsequent price observations are scored.",
+    "Score 1-month, 3-month, and 6-month checkpoints against the frozen protocol.",
+    "Do not make live-performance or investor-return claims from this protocol until a forward report exists."
+  ],
+  "release_id": "v0.2.0-defense",
+  "schema": "stock_harness_forward_paper_trading_start_v0_3",
+  "status": "started"
+}
