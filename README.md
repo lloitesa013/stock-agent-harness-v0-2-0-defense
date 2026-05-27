@@ -1,5 +1,7 @@
 # Stock Agent Harness v0.2.0-defense
 
+[![Stock Harness Verification CI](https://github.com/lloitesa013/stock-agent-harness-v0-2-0-defense/actions/workflows/stock-harness-ci.yml/badge.svg)](https://github.com/lloitesa013/stock-agent-harness-v0-2-0-defense/actions/workflows/stock-harness-ci.yml)
+
 Sealed public release for a deterministic, claim-governed stock research harness.
 
 ## Current Public Claim
