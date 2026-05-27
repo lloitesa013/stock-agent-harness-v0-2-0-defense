@@ -7,14 +7,13 @@ on:
     branches: [ main, master ]
   workflow_dispatch:
 
-env:
-  STOCK_HARNESS_TMPDIR: ${{ runner.temp }}/stock-harness-tmp
-
 jobs:
   validate-stock-harness:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+    env:
+      STOCK_HARNESS_TMPDIR: ${{ runner.temp }}/stock-harness-tmp
 
     steps:
     - name: Checkout code
