@@ -1,4 +1,20 @@
-# Downside-Aware Stock Harness
+# Stock Agent Harness v0.2.0-defense
+
+Sealed public release for a deterministic, claim-governed stock research harness.
+
+## Current Public Claim
+
+> SOTA-grade downside-adjusted hypothetical backtested performance under the included deterministic `downside_performance_v1` benchmark suite.
+
+This is a scoped benchmark claim. It is not financial advice, not live trading evidence, not a guaranteed-return claim, and not a universal market-dominance claim.
+
+## Release Evidence
+
+- One-page summary: [release_evidence/v0.2.0-defense-final/ONE_PAGE_SUMMARY.md](release_evidence/v0.2.0-defense-final/ONE_PAGE_SUMMARY.md)
+- Release seal: [release_evidence/v0.2.0-defense-final/RELEASE_SEAL_MANIFEST.json](release_evidence/v0.2.0-defense-final/RELEASE_SEAL_MANIFEST.json)
+- Technical paper: [release_evidence/v0.2.0-defense-final/paper/DOWNSIDE_PERFORMANCE_CLAIM_PAPER.pdf](release_evidence/v0.2.0-defense-final/paper/DOWNSIDE_PERFORMANCE_CLAIM_PAPER.pdf)
+- Forward protocol: [release_evidence/v0.2.0-defense-final/forward/FORWARD_PAPER_TRADING_START.md](release_evidence/v0.2.0-defense-final/forward/FORWARD_PAPER_TRADING_START.md)
+- Release note: [RELEASE_V0_2_0_DEFENSE.md](RELEASE_V0_2_0_DEFENSE.md)
 
 Research-only infrastructure for deterministic, local verification of downside-aware stock backtests.
 

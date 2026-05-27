@@ -5,6 +5,7 @@ on:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
+  workflow_dispatch:
 
 env:
   STOCK_HARNESS_TMPDIR: ${{ runner.temp }}/stock-harness-tmp
@@ -12,6 +13,8 @@ env:
 jobs:
   validate-stock-harness:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
 
     steps:
     - name: Checkout code
@@ -22,9 +25,13 @@ jobs:
       with:
         python-version: '3.10'
 
+    - name: Prepare artifact directories
+      run: |
+        mkdir -p reports dist "$STOCK_HARNESS_TMPDIR"
+
     - name: Compile stock harness modules
       run: |
-        python3 -m py_compile angelos_os/stock_harness.py angelos_os/__init__.py angelos_os/engine.py angelos_os/profiles.py angelos_os/providers.py angelos_os/safety.py angelos_os/schemas.py angelos_os/score_core.py angelos_os/validation.py angelos_os/version.py ops/benchmark_stock_harness.py ops/compare_stock_harness_baselines.py ops/run_stock_harness_release_gate.py ops/run_stock_harness_official_claim_gate.py ops/build_stock_harness_release_bundle.py ops/build_stock_harness_evidence_packet.py ops/verify_stock_harness_evidence_packet.py ops/build_stock_harness_release_candidate.py ops/verify_stock_harness_release_candidate.py ops/replay_stock_harness_release_candidate.py ops/build_stock_harness_official_claim_packet.py ops/verify_stock_harness_official_claim_packet.py ops/audit_stock_harness_release.py tests/test_stock_harness.py
+        python3 -m py_compile angelos_os/stock_harness.py angelos_os/agent_harness.py angelos_os/performance_harness.py angelos_os/performance_defense.py angelos_os/__init__.py angelos_os/engine.py angelos_os/profiles.py angelos_os/providers.py angelos_os/safety.py angelos_os/schemas.py angelos_os/score_core.py angelos_os/validation.py angelos_os/version.py ops/benchmark_stock_harness.py ops/compare_stock_harness_baselines.py ops/run_stock_harness_release_gate.py ops/run_stock_harness_official_claim_gate.py ops/build_stock_harness_release_bundle.py ops/build_stock_harness_evidence_packet.py ops/verify_stock_harness_evidence_packet.py ops/build_stock_harness_release_candidate.py ops/verify_stock_harness_release_candidate.py ops/replay_stock_harness_release_candidate.py ops/build_stock_harness_official_claim_packet.py ops/verify_stock_harness_official_claim_packet.py ops/audit_stock_harness_release.py ops/run_stock_agent_harness.py ops/run_stock_agent_harness_claim_gate.py ops/run_downside_performance_benchmark.py ops/run_downside_performance_claim_gate.py ops/build_downside_performance_defense_packet.py ops/verify_downside_performance_defense_packet.py ops/build_downside_performance_public_artifacts.py ops/seal_v0_2_0_defense_release.py tests/test_stock_harness.py tests/test_stock_agent_harness.py tests/test_downside_performance_harness.py tests/test_downside_performance_defense.py
 
     - name: Run stock harness unit suite
       run: |
