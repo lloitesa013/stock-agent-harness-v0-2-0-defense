@@ -6,6 +6,17 @@ Claim-governed verification and evidence system for financial AI agents.
 
 This is not a trading bot. This is a claim-governed verification and evidence system for financial AI agents.
 
+![v0.3.1 presentation dashboard](docs/assets/v0_3_1_presentation_dashboard.png)
+
+## v0.3.1 Presentation UI
+
+`v0.3.1-presentation-ui` turns the v0.3 real-market evidence release into an executive-reviewable dashboard and short demo package.
+
+- v0.3 evidence remains unchanged: sealed ETF evidence, deterministic gates, and weak candidate performance are preserved.
+- The dashboard is read-only and does not run backtests, place orders, or regenerate claims.
+- Demo script: [docs/DEMO_SCRIPT_3_MIN.md](docs/DEMO_SCRIPT_3_MIN.md)
+- Release notes: [RELEASE_NOTES_V0_3_1_PRESENTATION_UI.md](RELEASE_NOTES_V0_3_1_PRESENTATION_UI.md)
+
 ## Current Public Claim
 
 > SOTA-grade downside-adjusted hypothetical backtested performance under the included deterministic `downside_performance_v1` benchmark suite.
@@ -30,6 +41,7 @@ The `v0.2.1-productization` work repositions the project as Financial Agent Evid
 - Managing agent: [docs/MANAGING_AGENT.md](docs/MANAGING_AGENT.md)
 - Comparison: [docs/COMPARISON.md](docs/COMPARISON.md)
 - Pitch script: [docs/PITCH_SCRIPT.md](docs/PITCH_SCRIPT.md)
+- Three-minute demo script: [docs/DEMO_SCRIPT_3_MIN.md](docs/DEMO_SCRIPT_3_MIN.md)
 - Roadmap: [docs/ROADMAP.md](docs/ROADMAP.md)
 - Risk disclosure: [docs/RISK_DISCLOSURE.md](docs/RISK_DISCLOSURE.md)
 

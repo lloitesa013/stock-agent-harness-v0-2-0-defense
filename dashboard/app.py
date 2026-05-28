@@ -108,6 +108,7 @@ def collect_evidence(root: Optional[Path] = None) -> Dict[str, Any]:
     real_market_gate = load_json(paths["real_market_gate"])
     real_market_data_manifest = load_json(paths["real_market_data_manifest"])
     real_market_metrics = load_json(paths["real_market_metrics"])
+    real_market_baseline = load_json(paths["real_market_baseline"])
     real_market_cost_stress = load_json(paths["real_market_cost_stress"])
     real_market_walk_forward = load_json(paths["real_market_walk_forward"])
     real_market_bootstrap = load_json(paths["real_market_bootstrap"])
@@ -137,6 +138,7 @@ def collect_evidence(root: Optional[Path] = None) -> Dict[str, Any]:
             "gate": real_market_gate,
             "data_manifest": real_market_data_manifest,
             "metrics": real_market_metrics,
+            "baseline": real_market_baseline,
             "cost_stress": real_market_cost_stress,
             "walk_forward": real_market_walk_forward,
             "bootstrap": real_market_bootstrap,
@@ -156,6 +158,45 @@ def collect_evidence(root: Optional[Path] = None) -> Dict[str, Any]:
             else "Pending",
             "real_market_evidence": bool_status(real_market_gate.get("real_market_claim_ready")),
         },
+    }
+
+
+def presentation_summary(evidence: Mapping[str, Any]) -> Dict[str, str]:
+    real_market = evidence.get("real_market", {})
+    gate = real_market.get("gate", {})
+    data_manifest = real_market.get("data_manifest", {})
+    metrics = real_market.get("metrics", {})
+    candidate = metrics.get("agentic_candidate_v1", {})
+    claim_scope = gate.get("claim_scope", {})
+    tickers = data_manifest.get("tickers") or ["SPY", "QQQ", "TLT", "GLD", "IEF"]
+    start = data_manifest.get("start", "2016-01-01")
+    end = data_manifest.get("end", "2025-12-31")
+    total_return = candidate.get("total_return")
+    drawdown = candidate.get("max_drawdown")
+    if isinstance(total_return, (int, float)) and total_return < 0:
+        candidate_result = "WEAK, PRESERVED"
+    elif isinstance(total_return, (int, float)):
+        candidate_result = "POSITIVE, PRESERVED"
+    else:
+        candidate_result = "PENDING"
+    return {
+        "presentation_release": "v0.3.1-presentation-ui",
+        "headline": "Evidence OS verifies, scopes, and seals financial AI claims on deterministic and sealed ETF evidence.",
+        "real_market_status": bool_status(gate.get("real_market_claim_ready")),
+        "official_mode": str(claim_scope.get("official_mode", "sealed_csv_no_network")),
+        "ticker_coverage": ", ".join(str(ticker) for ticker in tickers),
+        "benchmark_period": f"{start} to {end}",
+        "data_distribution": str(
+            data_manifest.get("distribution_policy")
+            or claim_scope.get(
+                "distribution_policy",
+                "public manifest/sample only; full CSV local/private",
+            )
+        ),
+        "candidate_result": candidate_result,
+        "candidate_total_return": percent(total_return),
+        "candidate_max_drawdown": percent(drawdown),
+        "non_claims": "No live trading readiness, future-return prediction, return guarantee, or market dominance claim.",
     }
 
 
@@ -211,6 +252,31 @@ def _render_status_cards(st: Any, status: Mapping[str, str]) -> None:
     items = list(status.items())
     for index, (label, value) in enumerate(items):
         cols[index % 3].metric(label.replace("_", " ").title(), value)
+
+
+def _render_presentation_overview(st: Any, evidence: Mapping[str, Any]) -> None:
+    summary = presentation_summary(evidence)
+    st.subheader("Executive Summary")
+    st.write(summary["headline"])
+    cols = st.columns(4)
+    cols[0].metric("Claim Status", evidence["status"].get("claim_status", "PENDING"))
+    cols[1].metric("Real Market Evidence", summary["real_market_status"])
+    cols[2].metric("Data Mode", summary["official_mode"])
+    cols[3].metric("Candidate Result", summary["candidate_result"])
+    st.table(
+        [
+            {"item": "ETF coverage", "value": summary["ticker_coverage"]},
+            {"item": "Benchmark period", "value": summary["benchmark_period"]},
+            {"item": "Data distribution", "value": summary["data_distribution"]},
+            {"item": "Candidate total return", "value": summary["candidate_total_return"]},
+            {"item": "Candidate max drawdown", "value": summary["candidate_max_drawdown"]},
+            {"item": "Boundary", "value": summary["non_claims"]},
+        ]
+    )
+    st.info(
+        "v0.3 proves the evidence pipeline works on sealed real ETF data. "
+        "v0.3.1 improves presentation only; it does not expand the claim."
+    )
 
 
 def _render_claim_registry(st: Any, evidence: Mapping[str, Any]) -> None:
@@ -353,6 +419,7 @@ def render_dashboard(st: Any, evidence: Mapping[str, Any]) -> None:
     )
 
     with tabs[0]:
+        _render_presentation_overview(st, evidence)
         _render_status_cards(st, evidence["status"])
         st.subheader("Evidence Root")
         st.code(evidence["root"])

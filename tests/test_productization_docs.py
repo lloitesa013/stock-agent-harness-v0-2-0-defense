@@ -11,6 +11,7 @@ DOCS = [
     "docs/MANAGING_AGENT.md",
     "docs/COMPARISON.md",
     "docs/PITCH_SCRIPT.md",
+    "docs/DEMO_SCRIPT_3_MIN.md",
     "docs/ROADMAP.md",
     "docs/RISK_DISCLOSURE.md",
 ]

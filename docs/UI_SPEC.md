@@ -6,6 +6,16 @@ The first UI is a Streamlit evidence viewer. It reads the existing `release_evid
 
 Purpose: give an executive-level answer to "is this claim defensible?"
 
+`v0.3.1-presentation-ui` adds a first-screen executive summary before the detailed cards:
+
+- claim status
+- real-market evidence status
+- sealed-data mode
+- candidate result
+- ETF coverage
+- benchmark period
+- public manifest/sample distribution policy
+
 Cards:
 
 - Claim Status: PASS / FAIL / PENDING.

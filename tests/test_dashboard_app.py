@@ -2,7 +2,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from dashboard.app import artifact_rows, collect_evidence, metric_rows
+from dashboard.app import artifact_rows, collect_evidence, metric_rows, presentation_summary
 
 
 class DashboardEvidenceTests(unittest.TestCase):
@@ -14,6 +14,10 @@ class DashboardEvidenceTests(unittest.TestCase):
         self.assertGreater(evidence["candidate_metrics"]["return_multiple"], 1.0)
         self.assertIn(evidence["status"]["real_market_evidence"], {"PASS", "PENDING"})
         self.assertIn("real_market", evidence)
+        summary = presentation_summary(evidence)
+        self.assertEqual(summary["presentation_release"], "v0.3.1-presentation-ui")
+        self.assertIn("SPY", summary["ticker_coverage"])
+        self.assertIn("No live trading readiness", summary["non_claims"])
 
     def test_missing_evidence_is_pending_not_error(self):
         with tempfile.TemporaryDirectory() as tmpdir:
@@ -21,6 +25,7 @@ class DashboardEvidenceTests(unittest.TestCase):
         self.assertEqual(evidence["status"]["claim_status"], "PENDING")
         self.assertEqual(evidence["status"]["forward_validation"], "Pending")
         self.assertEqual(evidence["status"]["real_market_evidence"], "PENDING")
+        self.assertEqual(presentation_summary(evidence)["real_market_status"], "PENDING")
         rows = artifact_rows(evidence["paths"])
         self.assertTrue(rows)
         self.assertTrue(all(row["status"] == "PENDING" for row in rows))

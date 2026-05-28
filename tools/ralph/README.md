@@ -10,6 +10,7 @@ Ralph is not part of the official evidence packet, CI gate, performance claim, o
 cd tools\ralph
 npm install
 node .\v0_3_real_market_agent.mjs "..\.." "Review v0.3 readiness and finish with DONE."
+node .\v0_3_1_presentation_agent.mjs "..\.." "Review presentation readiness and finish with DONE."
 ```
 
 If no `OPENAI_API_KEY` is configured, the agent exits with a setup message instead of producing a report.
@@ -21,3 +22,4 @@ If no `OPENAI_API_KEY` is configured, the agent exits with a setup message inste
 - Ralph does not mutate sealed evidence.
 - Ralph output is not official claim evidence.
 - Official v0.3 gates must remain deterministic, Python-based, sealed-data, and no-network.
+- The v0.3.1 Ralph helper is for presentation-readiness review only.
