@@ -2,20 +2,25 @@
 
 [![Stock Harness Verification CI](https://github.com/lloitesa013/stock-agent-harness-v0-2-0-defense/actions/workflows/stock-harness-ci.yml/badge.svg)](https://github.com/lloitesa013/stock-agent-harness-v0-2-0-defense/actions/workflows/stock-harness-ci.yml)
 
-Claim-governed verification and evidence system for financial AI agents.
+Financial AI claim verification reference architecture.
 
-This is not a trading bot. This is a claim-governed verification and evidence system for financial AI agents.
+Not a trading bot. Not financial advice. Not live trading software.
+
+This project verifies whether financial-agent performance claims are scoped,
+reproducible, cost-aware, and sealed as reviewable evidence.
 
 ![v0.3.1 presentation dashboard](docs/assets/v0_3_1_presentation_dashboard.png)
 
-## v0.3.1 Presentation UI
+## Latest
 
-`v0.3.1-presentation-ui` turns the v0.3 real-market evidence release into an executive-reviewable dashboard and short demo package.
+- `v0.3.1-presentation-ui`: read-only executive dashboard and short demo package
+  for the v0.3 evidence release.
+- `v0.3-real-market-data-defense`: sealed ETF evidence for `SPY`, `QQQ`, `TLT`,
+  `GLD`, and `IEF`; no live trading or future-return claim.
+- `v0.2.0-defense`: performance-defense packet with strategy freeze, evidence
+  manifests, and forward paper-trading protocol.
 
-- v0.3 evidence remains unchanged: sealed ETF evidence, deterministic gates, and weak candidate performance are preserved.
-- The dashboard is read-only and does not run backtests, place orders, or regenerate claims.
-- Demo script: [docs/DEMO_SCRIPT_3_MIN.md](docs/DEMO_SCRIPT_3_MIN.md)
-- Release notes: [RELEASE_NOTES_V0_3_1_PRESENTATION_UI.md](RELEASE_NOTES_V0_3_1_PRESENTATION_UI.md)
+See the three-minute demo script: [docs/DEMO_SCRIPT_3_MIN.md](docs/DEMO_SCRIPT_3_MIN.md).
 
 ## Current Public Claim
 
