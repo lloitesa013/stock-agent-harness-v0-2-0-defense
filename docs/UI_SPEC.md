@@ -14,6 +14,7 @@ Cards:
 - Overfitting Risk: Low / Medium / High / Pending.
 - Cost Stress: Passed / Pending.
 - Forward Validation: Started / Pending.
+- Real Market Evidence: PASS / FAIL / PENDING.
 
 ## Claim Registry
 
@@ -72,6 +73,23 @@ Fields:
 - data-bias defense status
 - baseline fairness status
 
+## Real Market Evidence
+
+Purpose: show whether the v0.3 sealed ETF evidence packet is present and claim-ready without implying live performance.
+
+Fields:
+
+- ETF universe: SPY, QQQ, TLT, GLD, IEF
+- benchmark period
+- sealed data fingerprint
+- data integrity status
+- baseline comparison status
+- cost/slippage stress status
+- walk-forward status
+- bootstrap confidence status
+- strategy freeze status
+- real-market non-claims
+
 ## Evidence Packet Export
 
 Purpose: show what artifacts are sealed and where to find them.
@@ -86,4 +104,3 @@ Artifacts:
 - official claim packet
 
 The UI may link to local files when run locally, but it must not rewrite those files.
-

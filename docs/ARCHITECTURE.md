@@ -36,7 +36,20 @@ Market Data
 6. The evidence packet seals JSON, PDF, Markdown, hashes, and replay metadata.
 7. The dashboard displays PASS, FAIL, or PENDING status without running trading code.
 
+## v0.3 Real Market Evidence Flow
+
+```text
+Optional Downloader
+  -> Candidate ETF CSVs
+  -> Explicit Seal Step
+  -> Local/Private Sealed CSV + Public Hash Manifest
+  -> No-Network Real Market Gate
+  -> Real Market Evidence Packet
+  -> Dashboard Real Market Evidence tab
+```
+
+Official v0.3 evaluation reads only sealed CSV snapshots and `REAL_MARKET_DATA_MANIFEST.json`. The public repository carries the manifest and a tiny synthetic schema sample, while full provider-derived ETF CSV snapshots remain local/private artifacts unless redistribution rights are explicitly cleared. The downloader adapters are convenience tools and are not used by official gates.
+
 ## Current Boundary
 
 The dashboard and product documents are presentation and evidence-viewer layers. They do not change the sealed `v0.2.0-defense` evidence, and they do not add live-trading capability.
-

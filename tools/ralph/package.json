@@ -1,0 +1,15 @@
+{
+  "name": "financial-agent-evidence-os-ralph-tools",
+  "version": "0.3.0",
+  "private": true,
+  "type": "module",
+  "description": "Optional Ralph implementation helper for Financial Agent Evidence OS development.",
+  "scripts": {
+    "check": "node ./v0_3_real_market_agent.mjs --help"
+  },
+  "dependencies": {
+    "ai": "^6.0.191",
+    "ralph-loop-agent": "^0.0.3",
+    "zod": "^4.4.3"
+  }
+}

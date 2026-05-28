@@ -1,0 +1,99 @@
+{
+  "adjustment_policy": "provider_adjusted_daily_ohlcv_snapshot",
+  "benchmark_suite": "real_market_data_v1",
+  "common_date_count": 2514,
+  "common_first_date": "2016-01-04",
+  "common_last_date": "2025-12-31",
+  "distribution_policy": "public_repo_manifest_and_sample_only_full_csv_local_or_private_artifact",
+  "end": "2025-12-31",
+  "files": {
+    "GLD": {
+      "first_date": "2016-01-04",
+      "last_date": "2025-12-31",
+      "path": "GLD.csv",
+      "required_columns": [
+        "Date",
+        "Open",
+        "High",
+        "Low",
+        "Close",
+        "Volume"
+      ],
+      "rows": 2514,
+      "sha256": "5d763478d508df59d9b2b3e226cebae0abb2b032dbc6fa9c6fc6644f9a78b930"
+    },
+    "IEF": {
+      "first_date": "2016-01-04",
+      "last_date": "2025-12-31",
+      "path": "IEF.csv",
+      "required_columns": [
+        "Date",
+        "Open",
+        "High",
+        "Low",
+        "Close",
+        "Volume"
+      ],
+      "rows": 2514,
+      "sha256": "91580df1100ba0e9ca3d671e43fdb4f1c9a240374c1f93333a4881344f90d823"
+    },
+    "QQQ": {
+      "first_date": "2016-01-04",
+      "last_date": "2025-12-31",
+      "path": "QQQ.csv",
+      "required_columns": [
+        "Date",
+        "Open",
+        "High",
+        "Low",
+        "Close",
+        "Volume"
+      ],
+      "rows": 2514,
+      "sha256": "86a857eb11134919ef75b5b85ad33b2bf8634bbc903614db8c15bdeee5617a57"
+    },
+    "SPY": {
+      "first_date": "2016-01-04",
+      "last_date": "2025-12-31",
+      "path": "SPY.csv",
+      "required_columns": [
+        "Date",
+        "Open",
+        "High",
+        "Low",
+        "Close",
+        "Volume"
+      ],
+      "rows": 2514,
+      "sha256": "a0553f7b745f717e548bd6b8e858b3b957256bc9358e45b37c4ff98b6b1d2570"
+    },
+    "TLT": {
+      "first_date": "2016-01-04",
+      "last_date": "2025-12-31",
+      "path": "TLT.csv",
+      "required_columns": [
+        "Date",
+        "Open",
+        "High",
+        "Low",
+        "Close",
+        "Volume"
+      ],
+      "rows": 2514,
+      "sha256": "fbf90c2e7a0db5b4da4f0fba260b8b9ca1c74d7eb8321bd8152704b7c35b39de"
+    }
+  },
+  "fingerprint": "9e99fbb937a32f30ce5e469b3d55d4d514d8a4fff130886a282660e4642d067b",
+  "official_mode": "sealed_csv_no_network",
+  "provider": "yahoo_chart",
+  "schema": "real_market_data_manifest_v0_3",
+  "source_policy": "sealed_csv_snapshot_with_optional_downloader",
+  "start": "2016-01-01",
+  "tickers": [
+    "SPY",
+    "QQQ",
+    "TLT",
+    "GLD",
+    "IEF"
+  ]
+}

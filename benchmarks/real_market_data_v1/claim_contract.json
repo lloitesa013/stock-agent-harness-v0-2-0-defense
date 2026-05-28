@@ -1,0 +1,41 @@
+{
+  "schema": "real_market_data_claim_contract_v0_3",
+  "benchmark_suite": "real_market_data_v1",
+  "claim_limit": "Real market data evidence demonstrates that the Financial Agent Evidence OS can verify claim-governed strategy evidence on sealed ETF data. It does not establish live trading readiness, future returns, or market dominance.",
+  "official_mode": "sealed_csv_no_network",
+  "distribution_policy": "Public repository includes manifest and sample only; full provider-derived ETF CSV snapshots are local/private artifacts unless separately licensed.",
+  "required_tickers": [
+    "SPY",
+    "QQQ",
+    "TLT",
+    "GLD",
+    "IEF"
+  ],
+  "required_period": {
+    "start": "2016-01-01",
+    "end": "2025-12-31"
+  },
+  "required_gate_checks": [
+    "sealed_csv_manifest_present",
+    "required_tickers_present",
+    "sealed_csv_hashes_verified",
+    "benchmark_period_fixed",
+    "common_dates_sufficient",
+    "data_integrity_passed",
+    "baseline_comparison_present",
+    "cost_slippage_stress_present",
+    "walk_forward_present",
+    "bootstrap_confidence_present",
+    "strategy_freeze_present",
+    "claim_boundary_preserved"
+  ],
+  "non_claims": [
+    "No financial advice.",
+    "No live trading readiness claim.",
+    "No return guarantee or future performance claim.",
+    "No realized investor return claim.",
+    "No broker integration, order routing, or execution-readiness claim.",
+    "No universal market, strategy, or external-framework dominance claim.",
+    "No claim that real-market backtests are live or forward performance."
+  ]
+}

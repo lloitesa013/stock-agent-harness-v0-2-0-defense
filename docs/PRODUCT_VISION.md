@@ -31,6 +31,14 @@ Allowed scoped claim:
 
 This claim is limited to the included benchmark suite and remains hypothetical backtested performance.
 
+## Next Product Step
+
+`v0.3-real-market-data-defense` moves the Evidence OS from synthetic benchmark evidence into sealed ETF evidence for SPY, QQQ, TLT, GLD, and IEF. The purpose is not to claim real-world profitability. The purpose is to show that claim governance, data integrity, baseline comparison, cost stress, walk-forward review, bootstrap confidence, and strategy freeze checks operate on real market data.
+
+The longer-term target is a reference architecture and open evidence protocol for financial AI agent verification:
+
+> An open evidence protocol for financial AI agents.
+
 ## Non-Claims
 
 - No financial advice.
@@ -39,4 +47,3 @@ This claim is limited to the included benchmark suite and remains hypothetical b
 - No broker integration, order routing, or execution-readiness claim.
 - No universal market, strategy, or external-framework dominance claim.
 - No claim outside the included benchmark suites.
-

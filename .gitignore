@@ -13,5 +13,6 @@ target/
 *.aux
 *.out
 *.toc
+benchmarks/real_market_data_v1/sealed_csv/*.csv
 .DS_Store
 Thumbs.db

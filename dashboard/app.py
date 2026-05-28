@@ -54,6 +54,9 @@ def evidence_paths(root: Path) -> Dict[str, Path]:
     evidence = root / "evidence"
     defense = evidence / "downside_performance_v1_defense_packet"
     performance = evidence / "downside_performance_v1_evidence"
+    repo_real_market = REPO_ROOT / "dist" / "real_market_data_v1_evidence"
+    if root.resolve() != DEFAULT_EVIDENCE_ROOT.resolve():
+        repo_real_market = root / "real_market_data_v1_evidence"
     return {
         "root": root,
         "release_seal": root / "RELEASE_SEAL_MANIFEST.json",
@@ -75,6 +78,16 @@ def evidence_paths(root: Path) -> Dict[str, Path]:
         "official_packet": root / "official" / "stock_harness_official_claim_packet",
         "release_candidate": root / "official" / "stock_harness_release_candidate",
         "public_snapshot": root / "public_snapshot" / "downside_performance_v1_public_snapshot",
+        "real_market_evidence": repo_real_market,
+        "real_market_manifest": repo_real_market / "REAL_MARKET_EVIDENCE_MANIFEST.json",
+        "real_market_gate": repo_real_market / "real_market_gate.json",
+        "real_market_data_manifest": repo_real_market / "real_market_data_manifest.json",
+        "real_market_metrics": repo_real_market / "metrics.json",
+        "real_market_baseline": repo_real_market / "baseline_comparison.json",
+        "real_market_cost_stress": repo_real_market / "cost_slippage_stress_report.json",
+        "real_market_walk_forward": repo_real_market / "walk_forward_report.json",
+        "real_market_bootstrap": repo_real_market / "bootstrap_confidence_report.json",
+        "real_market_strategy_freeze": repo_real_market / "strategy_freeze_report.json",
     }
 
 
@@ -91,6 +104,14 @@ def collect_evidence(root: Optional[Path] = None) -> Dict[str, Any]:
     baseline_fairness = load_json(paths["baseline_fairness"])
     data_lineage = load_json(paths["data_lineage"])
     forward_protocol = load_json(paths["forward_protocol_json"])
+    real_market_manifest = load_json(paths["real_market_manifest"])
+    real_market_gate = load_json(paths["real_market_gate"])
+    real_market_data_manifest = load_json(paths["real_market_data_manifest"])
+    real_market_metrics = load_json(paths["real_market_metrics"])
+    real_market_cost_stress = load_json(paths["real_market_cost_stress"])
+    real_market_walk_forward = load_json(paths["real_market_walk_forward"])
+    real_market_bootstrap = load_json(paths["real_market_bootstrap"])
+    real_market_strategy_freeze = load_json(paths["real_market_strategy_freeze"])
 
     seal_checks = release_seal.get("checks", {})
     defense_checks = defense_gate.get("checks", {})
@@ -111,6 +132,16 @@ def collect_evidence(root: Optional[Path] = None) -> Dict[str, Any]:
         "baseline_fairness": baseline_fairness,
         "data_lineage": data_lineage,
         "forward_protocol": forward_protocol,
+        "real_market": {
+            "manifest": real_market_manifest,
+            "gate": real_market_gate,
+            "data_manifest": real_market_data_manifest,
+            "metrics": real_market_metrics,
+            "cost_stress": real_market_cost_stress,
+            "walk_forward": real_market_walk_forward,
+            "bootstrap": real_market_bootstrap,
+            "strategy_freeze": real_market_strategy_freeze,
+        },
         "status": {
             "claim_status": bool_status(seal_checks.get("performance_claim_publishable")),
             "strategy_freeze": bool_status(defense_checks.get("strategy_freeze_verified")),
@@ -123,6 +154,7 @@ def collect_evidence(root: Optional[Path] = None) -> Dict[str, Any]:
             if defense_checks.get("paper_trading_protocol_initialized")
             or seal_checks.get("forward_paper_trading_started")
             else "Pending",
+            "real_market_evidence": bool_status(real_market_gate.get("real_market_claim_ready")),
         },
     }
 
@@ -143,6 +175,9 @@ def artifact_rows(paths: Mapping[str, Path]) -> List[Dict[str, str]]:
         "official_packet",
         "release_candidate",
         "public_snapshot",
+        "real_market_manifest",
+        "real_market_gate",
+        "real_market_data_manifest",
     ]
     rows = []
     for key in keys:
@@ -247,6 +282,54 @@ def _render_exports(st: Any, evidence: Mapping[str, Any]) -> None:
     st.table(artifact_rows(evidence["paths"]))
 
 
+def _render_real_market(st: Any, evidence: Mapping[str, Any]) -> None:
+    real_market = evidence["real_market"]
+    gate = real_market["gate"]
+    data_manifest = real_market["data_manifest"]
+    checks = gate.get("checks", {})
+    st.subheader("v0.3 Real Market Evidence")
+    st.write(
+        gate.get("claim_scope", {}).get(
+            "claim_limit",
+            "Pending real-market evidence. Missing evidence is expected before v0.3 artifacts are generated.",
+        )
+    )
+    st.json(
+        {
+            "status": bool_status(gate.get("real_market_claim_ready")),
+            "official_mode": gate.get("claim_scope", {}).get("official_mode", "Pending"),
+            "provider": data_manifest.get("provider", "Pending"),
+            "period": {
+                "start": data_manifest.get("start", "Pending"),
+                "end": data_manifest.get("end", "Pending"),
+            },
+            "tickers": data_manifest.get("tickers", []),
+            "common_date_count": data_manifest.get("common_date_count", "Pending"),
+            "sealed_data_fingerprint": data_manifest.get("fingerprint", "Pending"),
+        }
+    )
+    st.subheader("Gate Checks")
+    st.json(checks if checks else {"status": "PENDING"})
+    st.subheader("Robustness Evidence")
+    st.json(
+        {
+            "cost_slippage_stress": real_market["cost_stress"].get("schema", "PENDING"),
+            "cost_slippage_passed": real_market["cost_stress"].get("passed", "PENDING"),
+            "walk_forward": real_market["walk_forward"].get("schema", "PENDING"),
+            "walk_forward_passed": real_market["walk_forward"].get("passed", "PENDING"),
+            "bootstrap": real_market["bootstrap"].get("schema", "PENDING"),
+            "strategy_freeze": real_market["strategy_freeze"].get("schema", "PENDING"),
+        }
+    )
+    st.subheader("Non-Claims")
+    non_claims = gate.get("claim_scope", {}).get("non_claims", [])
+    if non_claims:
+        for item in non_claims:
+            st.write(f"- {item}")
+    else:
+        st.write("Pending")
+
+
 def render_dashboard(st: Any, evidence: Mapping[str, Any]) -> None:
     st.set_page_config(page_title="Financial Agent Evidence OS", layout="wide")
     st.title("Financial Agent Evidence OS")
@@ -264,6 +347,7 @@ def render_dashboard(st: Any, evidence: Mapping[str, Any]) -> None:
             "Strategy Freeze",
             "Performance & Risk",
             "Overfitting Audit",
+            "Real Market Evidence",
             "Evidence Packet Export",
         ]
     )
@@ -281,6 +365,8 @@ def render_dashboard(st: Any, evidence: Mapping[str, Any]) -> None:
     with tabs[4]:
         _render_overfitting(st, evidence)
     with tabs[5]:
+        _render_real_market(st, evidence)
+    with tabs[6]:
         _render_exports(st, evidence)
 
 
@@ -298,4 +384,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

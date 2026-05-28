@@ -40,6 +40,32 @@ pip install -r requirements-dashboard.txt
 streamlit run dashboard/app.py
 ```
 
+## v0.3 Real Market Data Defense
+
+`v0.3-real-market-data-defense` extends Financial Agent Evidence OS from deterministic benchmark evidence to sealed real-market ETF evidence for `SPY`, `QQQ`, `TLT`, `GLD`, and `IEF` from `2016-01-01` through `2025-12-31`.
+
+The real-market layer verifies that the Evidence OS works on sealed ETF OHLCV data. It does not expand the project into live trading software and does not create a future-return claim.
+
+The public repository includes the real-market manifest, claim contract, and a tiny synthetic schema sample. Full provider-derived ETF CSV snapshots are not redistributed in the public repo because redistribution rights are unclear; keep them as local/private sealed artifacts or release assets with appropriate rights.
+
+Run the sealed no-network gate when local/private sealed CSV artifacts are present:
+
+```bash
+python3 ops/run_real_market_data_defense.py --clean --pretty --output reports/real_market_data_defense_latest.json
+```
+
+Optional data refresh adapters are available, but refreshed data must be explicitly sealed before official use:
+
+```bash
+python3 ops/download_real_market_data.py --provider yahoo_chart --pretty
+python3 ops/download_real_market_data.py --provider stooq --pretty
+python3 ops/download_real_market_data.py --provider yfinance --pretty
+```
+
+The local sealed snapshot manifest records `yahoo_chart` as its provider. The Stooq adapter is retained as a stdlib downloader, but the public Stooq endpoint may require an API key depending on access policy. Official gates do not call any downloader. The candidate strategy showed weak real-market performance, and that result is intentionally preserved as evidence rather than converted into a promotional claim.
+
+Ralph advisory tooling is available under [tools/ralph](tools/ralph/README.md). Ralph is optional, local-only, and not part of official evidence or CI.
+
 Research-only infrastructure for deterministic, local verification of downside-aware stock backtests.
 
 This project is not financial advice, not live trading software, not order routing, and not a broker integration. It is a no-network, CSV-based verification harness for testing whether simple stock-strategy research results survive downside-first checks, oracle parity, data-quality gates, and stress scenarios.

@@ -9,9 +9,12 @@
 ## v0.3-real-market-data-defense
 
 - Add SPY, QQQ, TLT, GLD, and IEF historical ETF benchmark inputs.
+- Support local/private sealed ETF CSV snapshots for `2016-01-01` through `2025-12-31`; the public repo carries manifest lineage and a synthetic schema sample, not full provider-derived CSVs.
+- Provide optional Stooq, Yahoo Chart, and yfinance downloader adapters, while keeping official gates sealed-data/no-network. The local sealed snapshot manifest uses Yahoo Chart data; the Stooq adapter remains available but may require API-key access depending on endpoint policy.
 - Add data-lineage disclosure for real market data.
 - Run data-integrity gates, baseline comparison, cost stress, walk-forward validation, bootstrap confidence intervals, strategy freeze, and evidence packet generation.
 - Maintain the claim boundary: real market data verifies harness behavior; it does not create a live-performance claim.
+- Keep Ralph as an optional local implementation helper, not an official evidence source.
 
 ## v0.4-overfitting-defense
 
@@ -38,4 +41,3 @@
 - Provide stable evidence packet schemas.
 - Provide dashboard-ready evidence outputs.
 - Provide repeatable release gates and external-review workflows.
-

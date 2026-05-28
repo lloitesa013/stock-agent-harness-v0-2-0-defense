@@ -102,6 +102,15 @@ from .performance_harness import (
     run_strategy_backtest,
     write_performance_evidence_packet,
 )
+from .real_market_harness import (
+    RealMarketRunConfig,
+    build_real_market_data_manifest,
+    download_real_market_csvs,
+    load_sealed_real_market_universe,
+    real_market_strategy_registry,
+    run_real_market_data_defense,
+    write_real_market_evidence_packet,
+)
 from .validation import validate_invariance, validate_provider_portability
 from .version import __version__
 
@@ -158,6 +167,7 @@ __all__ = [
     "ScoreJudgmentCore",
     "ScoreSafetyGate",
     "SafetyGate",
+    "RealMarketRunConfig",
     "SynOpticCore",
     "StressMatrixCase",
     "StressMatrixCaseResult",
@@ -177,6 +187,8 @@ __all__ = [
     "default_stress_matrix_cases",
     "default_strategy_registry",
     "default_synthetic_universe",
+    "build_real_market_data_manifest",
+    "download_real_market_csvs",
     "load_engine_equity_csv",
     "load_engine_fills_csv",
     "load_engine_order_intents_csv",
@@ -185,6 +197,7 @@ __all__ = [
     "load_market_calendar_csv",
     "load_multi_asset_csv_directory",
     "load_ohlcv_csv",
+    "load_sealed_real_market_universe",
     "run_backtest",
     "run_cost_stress",
     "run_data_quality_gate",
@@ -193,6 +206,8 @@ __all__ = [
     "run_ma_parameter_sweep",
     "run_multi_asset_benchmark",
     "run_regime_stress",
+    "real_market_strategy_registry",
+    "run_real_market_data_defense",
     "run_stock_agent_harness",
     "run_strategy_backtest",
     "run_stress_matrix",
@@ -206,5 +221,6 @@ __all__ = [
     "write_multi_asset_case_artifacts",
     "write_multi_asset_benchmark_report",
     "write_performance_evidence_packet",
+    "write_real_market_evidence_packet",
     "write_stock_report",
 ]
