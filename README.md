@@ -1,8 +1,10 @@
-# Stock Agent Harness v0.2.0-defense
+# Financial Agent Evidence OS
 
 [![Stock Harness Verification CI](https://github.com/lloitesa013/stock-agent-harness-v0-2-0-defense/actions/workflows/stock-harness-ci.yml/badge.svg)](https://github.com/lloitesa013/stock-agent-harness-v0-2-0-defense/actions/workflows/stock-harness-ci.yml)
 
-Sealed public release for a deterministic, claim-governed stock research harness.
+Claim-governed verification and evidence system for financial AI agents.
+
+This is not a trading bot. This is a claim-governed verification and evidence system for financial AI agents.
 
 ## Current Public Claim
 
@@ -17,6 +19,26 @@ This is a scoped benchmark claim. It is not financial advice, not live trading e
 - Technical paper: [release_evidence/v0.2.0-defense-final/paper/DOWNSIDE_PERFORMANCE_CLAIM_PAPER.pdf](release_evidence/v0.2.0-defense-final/paper/DOWNSIDE_PERFORMANCE_CLAIM_PAPER.pdf)
 - Forward protocol: [release_evidence/v0.2.0-defense-final/forward/FORWARD_PAPER_TRADING_START.md](release_evidence/v0.2.0-defense-final/forward/FORWARD_PAPER_TRADING_START.md)
 - Release note: [RELEASE_V0_2_0_DEFENSE.md](RELEASE_V0_2_0_DEFENSE.md)
+
+## Productization Layer
+
+The `v0.2.1-productization` work repositions the project as Financial Agent Evidence OS:
+
+- Product vision: [docs/PRODUCT_VISION.md](docs/PRODUCT_VISION.md)
+- Architecture: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)
+- UI spec: [docs/UI_SPEC.md](docs/UI_SPEC.md)
+- Managing agent: [docs/MANAGING_AGENT.md](docs/MANAGING_AGENT.md)
+- Comparison: [docs/COMPARISON.md](docs/COMPARISON.md)
+- Pitch script: [docs/PITCH_SCRIPT.md](docs/PITCH_SCRIPT.md)
+- Roadmap: [docs/ROADMAP.md](docs/ROADMAP.md)
+- Risk disclosure: [docs/RISK_DISCLOSURE.md](docs/RISK_DISCLOSURE.md)
+
+Run the read-only Streamlit evidence viewer:
+
+```bash
+pip install -r requirements-dashboard.txt
+streamlit run dashboard/app.py
+```
 
 Research-only infrastructure for deterministic, local verification of downside-aware stock backtests.
 
