@@ -28,6 +28,8 @@ sealed as reviewable evidence.
 - Forward protocol: [release_evidence/v0.2.0-defense-final/forward/FORWARD_PAPER_TRADING_START.md](release_evidence/v0.2.0-defense-final/forward/FORWARD_PAPER_TRADING_START.md)
 - Release note: [RELEASE_V0_2_0_DEFENSE.md](RELEASE_V0_2_0_DEFENSE.md)
 - Three-minute demo script: [docs/DEMO_SCRIPT_3_MIN.md](docs/DEMO_SCRIPT_3_MIN.md)
+- Official claim packet: [release_evidence/v0.2.0-defense-final/official/stock_harness_official_claim_packet](release_evidence/v0.2.0-defense-final/official/stock_harness_official_claim_packet)
+- First-time reader guide: [docs/FIRST_TIME_READER_GUIDE_KO.md](docs/FIRST_TIME_READER_GUIDE_KO.md)
 
 ## Current Layers
 
@@ -45,6 +47,12 @@ sealed as reviewable evidence.
 This repository contains scoped benchmark claim language, including
 SOTA-grade phrasing inside specific included benchmark suites. Such language is
 not a universal market, trading, or investment claim.
+
+Exact verification claim: SOTA-grade deterministic verification coverage for local, no-dependency, downside-aware stock backtest research on the included downside_verification_v1 benchmark suite.
+
+This is a verification claim, not a financial, trading, or deployment-readiness claim.
+
+Literal boundary: not financial advice.
 
 The supported claims must be read with these boundaries:
 
@@ -78,6 +86,12 @@ Run the public-claim evidence comparison:
 
 ```bash
 python3 ops/compare_stock_harness_baselines.py --pretty
+```
+
+Run the scoped release gate:
+
+```bash
+python3 ops/run_stock_harness_release_gate.py --pretty --output reports/stock_harness_release_gate_latest.json
 ```
 
 Run the performance claim gate:
