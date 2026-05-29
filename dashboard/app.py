@@ -325,6 +325,125 @@ def evidence_packet_map(evidence: Mapping[str, Any]) -> List[Dict[str, str]]:
     return rows
 
 
+def release_comparison_rows(evidence: Mapping[str, Any]) -> List[Dict[str, str]]:
+    paths = evidence["paths"]
+    release_seal = evidence.get("release_seal", {})
+    public_manifest = _load_manifest(paths["public_snapshot"], "PUBLIC_SNAPSHOT_MANIFEST.json")
+    official_manifest = _load_manifest(paths["official_packet"], "OFFICIAL_CLAIM_PACKET_MANIFEST.json")
+    candidate_manifest = _load_manifest(paths["release_candidate"], "RELEASE_CANDIDATE_MANIFEST.json")
+    real_market_manifest = evidence.get("real_market", {}).get("manifest", {})
+    return [
+        {
+            "release_layer": "Sealed release",
+            "artifact": "RELEASE_SEAL_MANIFEST.json",
+            "visibility": "Private/local evidence index",
+            "artifact_status": file_status(paths["release_seal"]),
+            "manifest_status": _manifest_status(release_seal),
+            "file_count": str(release_seal.get("file_count", "Pending")),
+            "reviewer_use": "Confirms the release packet was sealed and all copied sources were recorded.",
+            "boundary": "Sanitized claim wording is shown in the dashboard before public review.",
+        },
+        {
+            "release_layer": "Public snapshot",
+            "artifact": "downside_performance_v1_public_snapshot",
+            "visibility": "Public-safe evidence subset",
+            "artifact_status": file_status(paths["public_snapshot"]),
+            "manifest_status": _manifest_status(public_manifest),
+            "file_count": str(public_manifest.get("file_count", "Pending")),
+            "reviewer_use": "Lets a reviewer inspect metrics, visual artifacts, paper text, and defense summaries without full local data.",
+            "boundary": "Public subset only; full raw workspace and private local CSV paths are not required for review.",
+        },
+        {
+            "release_layer": "Official packet",
+            "artifact": "stock_harness_official_claim_packet",
+            "visibility": "Reviewer-facing verification packet",
+            "artifact_status": file_status(paths["official_packet"]),
+            "manifest_status": _manifest_status(official_manifest),
+            "file_count": str(official_manifest.get("file_count", "Pending")),
+            "reviewer_use": "Shows official claim gate, release gate, replay evidence, and claim contract.",
+            "boundary": safe_claim_boundary_text(
+                {"claim_contract": {}, "defense_gate": {"claim_scope": official_manifest.get("claim_scope", {})}}
+            ),
+        },
+        {
+            "release_layer": "Release candidate",
+            "artifact": "stock_harness_release_candidate",
+            "visibility": "Build/replay candidate bundle",
+            "artifact_status": file_status(paths["release_candidate"]),
+            "manifest_status": _manifest_status(candidate_manifest),
+            "file_count": str(candidate_manifest.get("component_count", "Pending")),
+            "reviewer_use": "Checks that release and evidence zip components exist before official publication.",
+            "boundary": safe_claim_boundary_text(
+                {"claim_contract": {}, "defense_gate": {"claim_scope": candidate_manifest.get("claim_scope", {})}}
+            ),
+        },
+        {
+            "release_layer": "Real-market evidence",
+            "artifact": "real_market_data_v1_evidence",
+            "visibility": "Sealed ETF evidence; public manifest/sample only",
+            "artifact_status": file_status(paths["real_market_evidence"]),
+            "manifest_status": _manifest_status(real_market_manifest),
+            "file_count": str(real_market_manifest.get("file_count", "Pending")),
+            "reviewer_use": "Separates sealed real ETF evidence readiness from any live-trading claim.",
+            "boundary": presentation_summary(evidence)["non_claims"],
+        },
+    ]
+
+
+def tamper_walkthrough_rows(evidence: Mapping[str, Any]) -> List[Dict[str, str]]:
+    paths = evidence["paths"]
+    defense_checks = evidence.get("defense_gate", {}).get("checks", {})
+    seal_checks = evidence.get("release_seal", {}).get("checks", {})
+    real_market_gate = evidence.get("real_market", {}).get("gate", {})
+    safe_boundary = safe_claim_boundary_text(evidence)
+    return [
+        {
+            "tamper_case": "Release seal missing",
+            "gate_or_check": "release_seal",
+            "current_status": file_status(paths["release_seal"]),
+            "expected_failure": "Reviewer cannot treat the packet as sealed or complete.",
+        },
+        {
+            "tamper_case": "Strategy changed after freeze",
+            "gate_or_check": "strategy_freeze_verified",
+            "current_status": bool_status(defense_checks.get("strategy_freeze_verified")),
+            "expected_failure": "Claim should move to pending until freeze evidence is regenerated.",
+        },
+        {
+            "tamper_case": "Public snapshot missing",
+            "gate_or_check": "public_snapshot",
+            "current_status": file_status(paths["public_snapshot"]),
+            "expected_failure": "Public review loses the sanitized evidence bundle.",
+        },
+        {
+            "tamper_case": "Claim wording expands beyond boundary",
+            "gate_or_check": "safe_claim_boundary_text",
+            "current_status": "PASS" if "SOTA" not in safe_boundary else "FAIL",
+            "expected_failure": "Dashboard replaces unsupported public wording with the scoped benchmark boundary.",
+        },
+        {
+            "tamper_case": "Forward/live readiness implied",
+            "gate_or_check": "no_live_claims_preserved",
+            "current_status": bool_status(seal_checks.get("no_live_claims_preserved")),
+            "expected_failure": "Public claim is blocked if live trading or future-return language appears.",
+        },
+        {
+            "tamper_case": "Real-market packet not ready",
+            "gate_or_check": "real_market_claim_ready",
+            "current_status": bool_status(real_market_gate.get("real_market_claim_ready")),
+            "expected_failure": "Real-market evidence remains pending and cannot be used as a claim.",
+        },
+    ]
+
+
+def _load_manifest(root: Path, filename: str) -> Dict[str, Any]:
+    return load_json(root / filename)
+
+
+def _manifest_status(manifest: Mapping[str, Any]) -> str:
+    return str(manifest.get("status") or ("passed" if manifest.get("checks") else "Pending")).upper()
+
+
 def reproduction_command_rows() -> List[Dict[str, str]]:
     return [
         {
@@ -590,6 +709,27 @@ def _render_real_market(st: Any, evidence: Mapping[str, Any]) -> None:
         st.write("Pending")
 
 
+def _render_release_comparison(st: Any, evidence: Mapping[str, Any]) -> None:
+    st.subheader("Release Comparison")
+    st.write(
+        "This tab compares the sealed release, public snapshot, official packet, "
+        "release candidate, and real-market evidence layer. It is read-only and "
+        "does not rerun benchmarks."
+    )
+    st.table(release_comparison_rows(evidence))
+    st.subheader("Tamper Walkthrough")
+    st.write(
+        "These rows show the expected failure mode when an evidence boundary is "
+        "missing, stale, or expanded beyond its allowed claim."
+    )
+    st.table(tamper_walkthrough_rows(evidence))
+    st.info(
+        "The dashboard should make failures visible. PASS means the preserved "
+        "artifact or boundary is currently present; it does not mean investment "
+        "readiness."
+    )
+
+
 def render_dashboard(st: Any, evidence: Mapping[str, Any]) -> None:
     st.set_page_config(page_title="Financial Agent Evidence OS", layout="wide")
     st.title("Financial Agent Evidence OS")
@@ -608,6 +748,7 @@ def render_dashboard(st: Any, evidence: Mapping[str, Any]) -> None:
             "Backtest Evidence",
             "Overfitting Audit",
             "Real Market Evidence",
+            "Release Comparison",
             "Reviewer Checklist",
             "Evidence Packet Export",
         ]
@@ -629,8 +770,10 @@ def render_dashboard(st: Any, evidence: Mapping[str, Any]) -> None:
     with tabs[5]:
         _render_real_market(st, evidence)
     with tabs[6]:
-        _render_reviewer_checklist(st, evidence)
+        _render_release_comparison(st, evidence)
     with tabs[7]:
+        _render_reviewer_checklist(st, evidence)
+    with tabs[8]:
         _render_exports(st, evidence)
 
 

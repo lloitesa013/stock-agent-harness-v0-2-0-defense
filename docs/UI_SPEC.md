@@ -100,6 +100,31 @@ Fields:
 - strategy freeze status
 - real-market non-claims
 
+## Release Comparison
+
+Purpose: compare the evidence layers without rebuilding them.
+
+`v0.3.3-release-comparison` adds a read-only release comparison and tamper walkthrough:
+
+- sealed release manifest
+- public snapshot
+- official claim packet
+- release candidate
+- real-market evidence packet
+
+Fields:
+
+- release layer
+- artifact
+- visibility
+- artifact status
+- manifest status
+- file or component count
+- reviewer use
+- public boundary
+
+Tamper walkthrough rows describe which gate should fail when a seal, freeze, public snapshot, claim boundary, live-claim boundary, or real-market packet is missing or stale.
+
 ## Reviewer Checklist
 
 Purpose: answer whether the claim is scoped, evidenced, frozen, bounded, and reviewable.

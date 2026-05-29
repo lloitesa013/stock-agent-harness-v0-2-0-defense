@@ -7,10 +7,12 @@ from dashboard.app import (
     collect_evidence,
     evidence_packet_map,
     metric_rows,
+    release_comparison_rows,
     presentation_summary,
     reproduction_command_rows,
     safe_claim_boundary_text,
     reviewer_checklist,
+    tamper_walkthrough_rows,
 )
 
 
@@ -39,6 +41,15 @@ class DashboardEvidenceTests(unittest.TestCase):
         commands = reproduction_command_rows()
         self.assertTrue(any(row["purpose"] == "Open viewer" for row in commands))
         self.assertTrue(all("place orders" not in row["boundary"].lower() for row in commands[:-1]))
+        release_rows = release_comparison_rows(evidence)
+        self.assertTrue(any(row["release_layer"] == "Public snapshot" for row in release_rows))
+        self.assertTrue(any(row["release_layer"] == "Official packet" for row in release_rows))
+        self.assertTrue(all("artifact_status" in row for row in release_rows))
+        self.assertTrue(all("SOTA" not in row["boundary"] for row in release_rows))
+        tamper_rows = tamper_walkthrough_rows(evidence)
+        self.assertTrue(any(row["tamper_case"] == "Claim wording expands beyond boundary" for row in tamper_rows))
+        self.assertIn("PASS", {row["current_status"] for row in tamper_rows})
+        self.assertTrue(all("expected_failure" in row for row in tamper_rows))
 
     def test_missing_evidence_is_pending_not_error(self):
         with tempfile.TemporaryDirectory() as tmpdir:
@@ -56,6 +67,12 @@ class DashboardEvidenceTests(unittest.TestCase):
         packet_map = evidence_packet_map(evidence)
         self.assertTrue(packet_map)
         self.assertIn("PENDING", {row["status"] for row in packet_map})
+        release_rows = release_comparison_rows(evidence)
+        self.assertTrue(release_rows)
+        self.assertIn("PENDING", {row["artifact_status"] for row in release_rows})
+        tamper_rows = tamper_walkthrough_rows(evidence)
+        self.assertTrue(tamper_rows)
+        self.assertIn("PENDING", {row["current_status"] for row in tamper_rows})
 
     def test_metric_rows_put_candidate_first(self):
         rows = metric_rows(
