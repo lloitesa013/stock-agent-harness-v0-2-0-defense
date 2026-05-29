@@ -5,8 +5,10 @@ from pathlib import Path
 from dashboard.app import (
     artifact_rows,
     collect_evidence,
+    evidence_packet_map,
     metric_rows,
     presentation_summary,
+    reproduction_command_rows,
     safe_claim_boundary_text,
     reviewer_checklist,
 )
@@ -30,6 +32,13 @@ class DashboardEvidenceTests(unittest.TestCase):
         checklist = reviewer_checklist(evidence)
         self.assertTrue(any(row["check"] == "Read-only viewer" for row in checklist))
         self.assertTrue(any(row["check"] == "Financial boundary" for row in checklist))
+        packet_map = evidence_packet_map(evidence)
+        self.assertTrue(any(row["group"] == "Release gate" for row in packet_map))
+        self.assertTrue(any(row["group"] == "Official packet" for row in packet_map))
+        self.assertTrue(all("reviewer_question" in row for row in packet_map))
+        commands = reproduction_command_rows()
+        self.assertTrue(any(row["purpose"] == "Open viewer" for row in commands))
+        self.assertTrue(all("place orders" not in row["boundary"].lower() for row in commands[:-1]))
 
     def test_missing_evidence_is_pending_not_error(self):
         with tempfile.TemporaryDirectory() as tmpdir:
@@ -44,6 +53,9 @@ class DashboardEvidenceTests(unittest.TestCase):
         checklist = reviewer_checklist(evidence)
         self.assertEqual(checklist[0]["status"], "PASS")
         self.assertIn("PENDING", {row["status"] for row in checklist})
+        packet_map = evidence_packet_map(evidence)
+        self.assertTrue(packet_map)
+        self.assertIn("PENDING", {row["status"] for row in packet_map})
 
     def test_metric_rows_put_candidate_first(self):
         rows = metric_rows(

@@ -263,6 +263,88 @@ def artifact_rows(paths: Mapping[str, Path]) -> List[Dict[str, str]]:
     return rows
 
 
+def evidence_packet_map(evidence: Mapping[str, Any]) -> List[Dict[str, str]]:
+    paths = evidence["paths"]
+    groups = [
+        (
+            "Release gate",
+            "release_seal",
+            "Can this evidence packet be treated as sealed and publishable?",
+        ),
+        (
+            "Claim contract",
+            "claim_contract",
+            "What exact benchmark claim is allowed, and what is excluded?",
+        ),
+        (
+            "Defense gate",
+            "defense_gate",
+            "Did strategy freeze, data lineage, and defense checks pass?",
+        ),
+        (
+            "Strategy freeze",
+            "strategy_freeze",
+            "Was the candidate fixed before the final evaluation?",
+        ),
+        (
+            "Performance evidence",
+            "metrics",
+            "Which preserved metrics support or weaken the scoped claim?",
+        ),
+        (
+            "Real-market evidence",
+            "real_market_gate",
+            "Is the sealed ETF evidence packet present and claim-ready?",
+        ),
+        (
+            "Forward protocol",
+            "forward_protocol_md",
+            "What forward paper-trading boundary was initialized?",
+        ),
+        (
+            "Public snapshot",
+            "public_snapshot",
+            "Which sanitized artifacts can be reviewed without full local data?",
+        ),
+        (
+            "Official packet",
+            "official_packet",
+            "Which release bundle is the reviewer-facing evidence package?",
+        ),
+    ]
+    rows = []
+    for group, key, question in groups:
+        rows.append(
+            {
+                "group": group,
+                "artifact": key,
+                "status": file_status(paths[key]),
+                "reviewer_question": question,
+            }
+        )
+    return rows
+
+
+def reproduction_command_rows() -> List[Dict[str, str]]:
+    return [
+        {
+            "purpose": "Dashboard tests",
+            "command": "python -m unittest -v tests.test_dashboard_app",
+            "boundary": "Verifies the read-only viewer and missing-evidence behavior.",
+        },
+        {
+            "purpose": "Core unit tests",
+            "command": "python -m unittest discover -s tests",
+            "boundary": "Runs the existing harness tests without changing sealed evidence.",
+        },
+        {
+            "purpose": "Open viewer",
+            "command": "streamlit run dashboard/app.py",
+            "boundary": "Reads the sealed packet; does not run backtests or place orders.",
+        },
+    ]
+
+
 def metric_rows(metrics: Mapping[str, Mapping[str, Any]]) -> List[Dict[str, str]]:
     rows: List[Dict[str, str]] = []
     for strategy_id, payload in metrics.items():
@@ -431,6 +513,21 @@ def _render_overfitting(st: Any, evidence: Mapping[str, Any]) -> None:
 
 
 def _render_exports(st: Any, evidence: Mapping[str, Any]) -> None:
+    st.subheader("Evidence Packet Map")
+    st.write(
+        "Reviewer navigation for the sealed packet. These rows explain what to inspect; "
+        "they do not regenerate results."
+    )
+    for row in evidence_packet_map(evidence):
+        st.markdown(
+            f"**{row['group']}** - `{row['artifact']}` - **{row['status']}**  \n"
+            f"{row['reviewer_question']}"
+        )
+    st.subheader("Read-Only Reproduction Commands")
+    for row in reproduction_command_rows():
+        st.markdown(f"**{row['purpose']}**")
+        st.code(row["command"])
+        st.caption(row["boundary"])
     st.subheader("Sealed Artifacts")
     st.table(artifact_rows(evidence["paths"]))
 

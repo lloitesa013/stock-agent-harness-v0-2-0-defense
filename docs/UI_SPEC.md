@@ -118,6 +118,14 @@ Checks:
 
 Purpose: show what artifacts are sealed and where to find them.
 
+`v0.3.2-evidence-navigation` adds a reviewer navigation layer before the raw
+artifact list:
+
+- evidence packet map
+- reviewer question for each packet group
+- read-only reproduction commands
+- explicit boundary that commands do not regenerate sealed evidence
+
 Artifacts:
 
 - PDF paper
