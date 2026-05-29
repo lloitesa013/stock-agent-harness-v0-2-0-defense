@@ -7,6 +7,7 @@ from dashboard.app import (
     collect_evidence,
     metric_rows,
     presentation_summary,
+    safe_claim_boundary_text,
     reviewer_checklist,
 )
 
@@ -23,7 +24,9 @@ class DashboardEvidenceTests(unittest.TestCase):
         summary = presentation_summary(evidence)
         self.assertEqual(summary["presentation_release"], "v0.3.1-presentation-ui")
         self.assertIn("SPY", summary["ticker_coverage"])
+        self.assertEqual(summary["official_mode"], "Sealed CSV")
         self.assertIn("No live trading readiness", summary["non_claims"])
+        self.assertNotIn("SOTA", safe_claim_boundary_text(evidence))
         checklist = reviewer_checklist(evidence)
         self.assertTrue(any(row["check"] == "Read-only viewer" for row in checklist))
         self.assertTrue(any(row["check"] == "Financial boundary" for row in checklist))

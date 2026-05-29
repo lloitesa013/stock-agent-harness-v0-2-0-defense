@@ -14,6 +14,9 @@ from typing import Any, Dict, Iterable, List, Mapping, Optional
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_EVIDENCE_ROOT = REPO_ROOT / "release_evidence" / "v0.2.0-defense-final"
+PUBLIC_CLAIM_BOUNDARY = (
+    "Scoped downside-adjusted hypothetical backtested performance under the included benchmark only."
+)
 
 
 def load_json(path: Path) -> Dict[str, Any]:
@@ -48,6 +51,39 @@ def decimal(value: Any, digits: int = 2) -> str:
     if isinstance(value, (int, float)):
         return f"{value:.{digits}f}"
     return "Pending"
+
+
+def display_mode(value: Any) -> str:
+    value_text = str(value or "").strip()
+    if not value_text:
+        return "Pending"
+    if value_text == "sealed_csv_no_network":
+        return "Sealed CSV"
+    return value_text.replace("_", " ").title()
+
+
+def safe_claim_boundary_text(evidence: Mapping[str, Any]) -> str:
+    claim_contract = evidence.get("claim_contract", {})
+    defense_gate = evidence.get("defense_gate", {})
+    claim_scope = defense_gate.get("claim_scope", {})
+    raw_boundary = str(
+        claim_scope.get("claim_limit") or claim_contract.get("claim_id") or ""
+    ).strip()
+    if not raw_boundary:
+        return "Pending"
+    if "sota" in raw_boundary.lower():
+        return PUBLIC_CLAIM_BOUNDARY
+    return raw_boundary
+
+
+def public_claim_scope(claim_scope: Mapping[str, Any]) -> Dict[str, Any]:
+    public_scope = dict(claim_scope)
+    claim_limit = str(public_scope.get("claim_limit", "")).strip()
+    if "sota" in claim_limit.lower():
+        public_scope["claim_limit"] = PUBLIC_CLAIM_BOUNDARY
+    if "official_mode" in public_scope:
+        public_scope["official_mode"] = display_mode(public_scope["official_mode"])
+    return public_scope
 
 
 def evidence_paths(root: Path) -> Dict[str, Path]:
@@ -183,7 +219,7 @@ def presentation_summary(evidence: Mapping[str, Any]) -> Dict[str, str]:
         "presentation_release": "v0.3.1-presentation-ui",
         "headline": "Evidence OS verifies, scopes, and seals financial AI claims on deterministic and sealed ETF evidence.",
         "real_market_status": bool_status(gate.get("real_market_claim_ready")),
-        "official_mode": str(claim_scope.get("official_mode", "sealed_csv_no_network")),
+        "official_mode": display_mode(claim_scope.get("official_mode", "sealed_csv_no_network")),
         "ticker_coverage": ", ".join(str(ticker) for ticker in tickers),
         "benchmark_period": f"{start} to {end}",
         "data_distribution": str(
@@ -263,7 +299,7 @@ def reviewer_checklist(evidence: Mapping[str, Any]) -> List[Dict[str, str]]:
         {
             "check": "Claim boundary present",
             "status": "PASS" if claim_scope or claim_contract else "PENDING",
-            "evidence": str(claim_scope.get("claim_limit") or claim_contract.get("claim_id") or "Pending"),
+            "evidence": safe_claim_boundary_text(evidence),
         },
         {
             "check": "Non-claims present",
@@ -328,10 +364,11 @@ def _render_presentation_overview(st: Any, evidence: Mapping[str, Any]) -> None:
 def _render_claim_registry(st: Any, evidence: Mapping[str, Any]) -> None:
     defense_gate = evidence["defense_gate"]
     claim_scope = defense_gate.get("claim_scope", {})
+    public_scope = public_claim_scope(claim_scope)
     st.subheader("Allowed Claim")
-    st.write(claim_scope.get("claim_limit", "Pending"))
+    st.write(public_scope.get("claim_limit", "Pending"))
     st.subheader("Claim Scope")
-    st.json(claim_scope)
+    st.json(public_scope)
     st.subheader("Non-Claims")
     non_claims = claim_scope.get("non_claims", [])
     if non_claims:
@@ -412,9 +449,10 @@ def _render_real_market(st: Any, evidence: Mapping[str, Any]) -> None:
     gate = real_market["gate"]
     data_manifest = real_market["data_manifest"]
     checks = gate.get("checks", {})
+    claim_scope = public_claim_scope(gate.get("claim_scope", {}))
     st.subheader("v0.3 Real Market Evidence")
     st.write(
-        gate.get("claim_scope", {}).get(
+        claim_scope.get(
             "claim_limit",
             "Pending real-market evidence. Missing evidence is expected before v0.3 artifacts are generated.",
         )
@@ -422,7 +460,7 @@ def _render_real_market(st: Any, evidence: Mapping[str, Any]) -> None:
     st.json(
         {
             "status": bool_status(gate.get("real_market_claim_ready")),
-            "official_mode": gate.get("claim_scope", {}).get("official_mode", "Pending"),
+            "official_mode": claim_scope.get("official_mode", "Pending"),
             "provider": data_manifest.get("provider", "Pending"),
             "period": {
                 "start": data_manifest.get("start", "Pending"),
