@@ -12,6 +12,17 @@ sealed as reviewable evidence.
 
 ![v0.3.1 presentation dashboard](docs/assets/v0_3_1_presentation_dashboard.png)
 
+## Verification Snapshot
+
+| Check | Current public evidence |
+| --- | --- |
+| Full test suite | `python -m unittest discover -s tests` |
+| Latest local result | `118 tests OK`, 2 skipped |
+| Release comparison | Public-safe walkthrough screenshot below |
+| Boundary | Not financial advice, not live trading, not a future-return claim |
+
+![Release comparison walkthrough](docs/assets/release_comparison_walkthrough.png)
+
 ## What It Verifies
 
 - Whether a claim has an explicit benchmark scope.
