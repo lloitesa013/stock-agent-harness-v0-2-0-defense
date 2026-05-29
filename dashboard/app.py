@@ -247,6 +247,52 @@ def metric_rows(metrics: Mapping[str, Mapping[str, Any]]) -> List[Dict[str, str]
     return rows
 
 
+def reviewer_checklist(evidence: Mapping[str, Any]) -> List[Dict[str, str]]:
+    paths = evidence["paths"]
+    claim_contract = evidence.get("claim_contract", {})
+    defense_gate = evidence.get("defense_gate", {})
+    claim_scope = defense_gate.get("claim_scope", {})
+    non_claims = claim_scope.get("non_claims") or claim_contract.get("non_claims") or []
+    status = evidence.get("status", {})
+    return [
+        {
+            "check": "Read-only viewer",
+            "status": "PASS",
+            "evidence": "Dashboard loads sealed artifacts and does not run backtests or rewrite files.",
+        },
+        {
+            "check": "Claim boundary present",
+            "status": "PASS" if claim_scope or claim_contract else "PENDING",
+            "evidence": str(claim_scope.get("claim_limit") or claim_contract.get("claim_id") or "Pending"),
+        },
+        {
+            "check": "Non-claims present",
+            "status": "PASS" if non_claims else "PENDING",
+            "evidence": "; ".join(str(item) for item in non_claims[:3]) if non_claims else "Pending",
+        },
+        {
+            "check": "Strategy freeze",
+            "status": status.get("strategy_freeze", "PENDING"),
+            "evidence": str(evidence.get("strategy_freeze", {}).get("freeze_statement", "Pending")),
+        },
+        {
+            "check": "Data integrity",
+            "status": status.get("data_integrity", "PENDING"),
+            "evidence": "Data lineage and bias defense report loaded.",
+        },
+        {
+            "check": "Release artifacts",
+            "status": "PASS" if paths["official_packet"].exists() and paths["release_candidate"].exists() else "PENDING",
+            "evidence": "Official packet and release candidate are present." if paths["official_packet"].exists() and paths["release_candidate"].exists() else "Pending sealed artifacts.",
+        },
+        {
+            "check": "Financial boundary",
+            "status": "PASS",
+            "evidence": "No financial advice, no live trading readiness, no future-return promise.",
+        },
+    ]
+
+
 def _render_status_cards(st: Any, status: Mapping[str, str]) -> None:
     cols = st.columns(3)
     items = list(status.items())
@@ -312,6 +358,10 @@ def _render_strategy_freeze(st: Any, evidence: Mapping[str, Any]) -> None:
 
 def _render_performance(st: Any, evidence: Mapping[str, Any]) -> None:
     candidate = evidence["candidate_metrics"]
+    st.info(
+        "These metrics are preserved evidence records. They are not investment advice, "
+        "live trading readiness, or a future-return claim."
+    )
     st.subheader("Candidate Metrics")
     st.json(
         {
@@ -346,6 +396,15 @@ def _render_overfitting(st: Any, evidence: Mapping[str, Any]) -> None:
 def _render_exports(st: Any, evidence: Mapping[str, Any]) -> None:
     st.subheader("Sealed Artifacts")
     st.table(artifact_rows(evidence["paths"]))
+
+
+def _render_reviewer_checklist(st: Any, evidence: Mapping[str, Any]) -> None:
+    st.subheader("Reviewer Checklist")
+    st.write(
+        "This tab answers whether the claim is scoped, evidenced, frozen, and reviewable. "
+        "It intentionally does not recommend trades or regenerate results."
+    )
+    st.table(reviewer_checklist(evidence))
 
 
 def _render_real_market(st: Any, evidence: Mapping[str, Any]) -> None:
@@ -411,9 +470,10 @@ def render_dashboard(st: Any, evidence: Mapping[str, Any]) -> None:
             "Main Dashboard",
             "Claim Registry",
             "Strategy Freeze",
-            "Performance & Risk",
+            "Backtest Evidence",
             "Overfitting Audit",
             "Real Market Evidence",
+            "Reviewer Checklist",
             "Evidence Packet Export",
         ]
     )
@@ -434,6 +494,8 @@ def render_dashboard(st: Any, evidence: Mapping[str, Any]) -> None:
     with tabs[5]:
         _render_real_market(st, evidence)
     with tabs[6]:
+        _render_reviewer_checklist(st, evidence)
+    with tabs[7]:
         _render_exports(st, evidence)
 
 

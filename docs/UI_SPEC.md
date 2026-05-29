@@ -52,9 +52,9 @@ Fields:
 - train / validation / test partitions
 - rejected or adversarial controls
 
-## Performance & Risk
+## Backtest Evidence
 
-Purpose: show metrics without implying live performance.
+Purpose: show metrics as preserved evidence records without implying live performance.
 
 Fields:
 
@@ -99,6 +99,20 @@ Fields:
 - bootstrap confidence status
 - strategy freeze status
 - real-market non-claims
+
+## Reviewer Checklist
+
+Purpose: answer whether the claim is scoped, evidenced, frozen, bounded, and reviewable.
+
+Checks:
+
+- read-only viewer
+- claim boundary present
+- non-claims present
+- strategy freeze
+- data integrity
+- release artifacts
+- financial boundary
 
 ## Evidence Packet Export
 

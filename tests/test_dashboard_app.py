@@ -2,7 +2,13 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from dashboard.app import artifact_rows, collect_evidence, metric_rows, presentation_summary
+from dashboard.app import (
+    artifact_rows,
+    collect_evidence,
+    metric_rows,
+    presentation_summary,
+    reviewer_checklist,
+)
 
 
 class DashboardEvidenceTests(unittest.TestCase):
@@ -18,6 +24,9 @@ class DashboardEvidenceTests(unittest.TestCase):
         self.assertEqual(summary["presentation_release"], "v0.3.1-presentation-ui")
         self.assertIn("SPY", summary["ticker_coverage"])
         self.assertIn("No live trading readiness", summary["non_claims"])
+        checklist = reviewer_checklist(evidence)
+        self.assertTrue(any(row["check"] == "Read-only viewer" for row in checklist))
+        self.assertTrue(any(row["check"] == "Financial boundary" for row in checklist))
 
     def test_missing_evidence_is_pending_not_error(self):
         with tempfile.TemporaryDirectory() as tmpdir:
@@ -29,6 +38,9 @@ class DashboardEvidenceTests(unittest.TestCase):
         rows = artifact_rows(evidence["paths"])
         self.assertTrue(rows)
         self.assertTrue(all(row["status"] == "PENDING" for row in rows))
+        checklist = reviewer_checklist(evidence)
+        self.assertEqual(checklist[0]["status"], "PASS")
+        self.assertIn("PENDING", {row["status"] for row in checklist})
 
     def test_metric_rows_put_candidate_first(self):
         rows = metric_rows(
